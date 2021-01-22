@@ -33,10 +33,10 @@ const Header = (props) => {
   return (
 <div>
     <Navbar 
-        color="dark"
-        dark expand="md"
+        className="navbar"
+        expand="md"
         fixed="top">
-    <NavbarBrand href="/">ApartmentApp</NavbarBrand>
+    <NavbarBrand className= "nav-link" href="/">BARCRAWLZ</NavbarBrand>
     <NavbarToggler onClick={toggle} className="mr-2" />
     <Collapse isOpen={isOpen} navbar>
       <Nav className="mr-auto" navbar>
@@ -44,24 +44,24 @@ const Header = (props) => {
           !logged_in &&
           <>
         <NavItem >
-        <NavLink href={ sign_in_route }>Sign In
+        <NavLink className= "nav-link" href={ sign_in_route }>Sign In
         </NavLink>
       </NavItem>
       <NavItem >
-        <NavLink href={ sign_up_route }>Sign Up
+        <NavLink className= "nav-link" href={ sign_up_route }>Sign Up
         </NavLink>
       </NavItem>
       </>
     }
           {
-          !logged_in &&
+          logged_in &&
           <>
         <NavItem >
-        <NavLink href='/UserDashboard'>User Dashboard
+        <NavLink className= "nav-link" href='/UserDashboard'>User Dashboard
         </NavLink>
       </NavItem>
       <NavItem >
-        <NavLink href={ sign_out_route }>Sign Out
+        <NavLink className= "nav-link" href={ sign_out_route }>Sign Out
         </NavLink>
       </NavItem>
       </>
