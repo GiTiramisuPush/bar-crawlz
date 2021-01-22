@@ -1,6 +1,7 @@
+const barsSanDiego = [
 // Bar1
         {
-        // id: 1,
+        id:1,
         yelp_id: "eGhOLzFFIhrvF6QjSSpJsg",
         alias: "phils-bbq-san-diego-2",
         name: "Phil's BBQ",
@@ -21,7 +22,7 @@
         },
 // Bar2
         {
-        // id:1,
+        id:2,
         yelp_id: "J55fX2Gs-ry0XNCnEDiLNQ",
         alias: "donut-bar-san-diego",
         name: "Donut Bar",
@@ -38,11 +39,11 @@
         display_address:"631 B St,San Diego, CA 92101",
         phone: "+16192556360",
         display_phone: "(619) 255-6360",
-        crawl_id: 1
+        // crawl_id: 1
         },
 // Bar3
         {
-        id:1,
+        id:3,
         yelp_id: "VuR1rTb3XpOr8z0r8jC3eg",
         alias: "great-maple-hillcrest-san-diego",
         name: "Great Maple - Hillcrest",
@@ -59,11 +60,11 @@
         display_address: "1451 Washington St", "San Diego, CA 92103",
         phone: "+16192552282",
         display_phone: "(619) 255-2282",
-        crawl_id: 1
+        // crawl_id: 1
         },
 // Bar4
         {
-        id:1,
+        id:4,
         yelp_id: "AS--bXkiFStoRkwoLqkJEg",
         alias: "buds-louisiana-cafe-san-diego",
         name: "Bud's Louisiana Cafe",
@@ -80,11 +81,11 @@
         display_address:"4320 Viewridge Ave,Ste A,San Diego, CA 92123",
         phone: "+18585732837",
         display_phone: "(858) 573-2837",
-        crawl_id: 1
+        // crawl_id: 1
         },
 // Bar5
         {
-        id:1,
+        id:5,
         yelp_id: "mzLGnmpwtrIgUeplJtmOOw",
         alias: "la-puerta-san-diego",
         name: "La Puerta",
@@ -101,11 +102,11 @@
         display_address:"560 4th Ave,San Diego, CA 92101",
         phone: "+16196963466",
         display_phone: "(619) 696-3466",
-        crawl_id: 1
+        // crawl_id: 1
         },
 // Bar6
         {
-        id:1,
+        id:6,
         yelp_id: "vDGkFSA1waNe_dTRwjxQog",
         alias: "muzita-abyssinian-bistro-san-diego",
         name: "Muzita Abyssinian Bistro",
@@ -122,5 +123,6 @@
         display_address: "4651 Park Blvd San Diego, CA 92116",
         phone: "+16195467900",
         display_phone: "(619) 546-7900",
-        crawl_id: 1
+        // crawl_id: 1
         }
+]
