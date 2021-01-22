@@ -1,2 +1,14 @@
 // SASS file
-@import 'bootstrap'
+@import 'bootstrap';
+
+.footer {
+    position: fixed;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #494949;
+    color: white;
+    text-align: center;
+    z-index: 3;
+ }

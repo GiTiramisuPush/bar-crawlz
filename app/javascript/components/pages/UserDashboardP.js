@@ -13,7 +13,7 @@ class UserDashboardP extends Component {
         <br/>
         <br/>
         <br/>
-        UserData
+        UserDashboard
       </div>
     );
   }
