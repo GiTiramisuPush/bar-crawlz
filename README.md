@@ -55,8 +55,8 @@ $ yarn add react-router-dom
 
 
 $ rails g resource Crawl title:string user_id:integer
-$ rails g resource Bar yelp_id:string name:string image-url:string rating:float adress1:string address2:string address3:string city:string zip_code:integer country:string state:string display_address:string phone:string display_phone:string
-$ rails g resource JoinTable bar_id:references crawl_id:references
+$ rails g resource Bar yelp_id:string name:string image-url:string rating:float address1:string address2:string address3:string city:string zip_code:integer country:string state:string display_address:string phone:string display_phone:string
+$ rails g resource CrawlBar bar_id:references crawl_id:references
 
 - adding associations : has_many :through
 class User < ApplicationRecord
