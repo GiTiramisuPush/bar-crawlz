@@ -6,6 +6,8 @@ import SignInBanner from '../components/SignInBanner'
 
 class BarShow extends Component {
   render () {
+
+
     const { bar } = this.props
     return (
       <div className= "page-container">

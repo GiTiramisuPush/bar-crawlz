@@ -1,16 +1,17 @@
 import React from "react"
 
 //mock Data
-import mockBars from './pages/mockBars.js'
+// import mockBars from './pages/mockBars.js'
+import mockBars from './pages/yelpBarData.js'
 
 //Components
 import Header from './components/Header'
 import Footer from './components/Footer'
+import BarIndex from './components/BarIndex'
 
 //Pages
 import AboutUs from './pages/AboutUs'
 import BarCrawlEditP from './pages/BarCrawlEditP'
-import BarIndex from './pages/BarIndex'
 import BarShow from './pages/BarShow'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -37,8 +38,7 @@ class App extends React.Component {
     console.log("mockBars test",this.state.bars)
     console.log("logged in", this.props.logged_in)
     console.log("current user", this.props.current_user)
-    console.log(this.state.bars)
-
+    console.log("this.state.bars", this.state.bars)
 
     return (
 
@@ -56,7 +56,8 @@ class App extends React.Component {
     {/* -----Home Route----- */}
       <Route exact path="/" 
             render={ (props) => 
-            <Home           
+            <Home      
+              bars = { this.state.bars}     
               sign_in_route = { this.props.sign_in_route }
               sign_out_route = { this.props.sign_out_route }
               sign_up_route = { this.props.sign_up_route }
@@ -69,26 +70,15 @@ class App extends React.Component {
       <Route path="/about" component={ AboutUs } 
       />
 
-    {/* -----Bar Index (Search Page) Route----- */}
-      <Route 
-            path="/barindex"
-            render= { (props) =>
-        <BarIndex
-              bars = { this.state.bars}
-              sign_in_route = { this.props.sign_in_route }
-              sign_out_route = { this.props.sign_out_route }
-              sign_up_route = { this.props.sign_up_route }
-              new_user_route={ this.props.new_user_route } 
-              />
-            }
-      />
 
     {/* -----Bar Show Route----- */}
     <Route 
-          path="/barshow/:id"
+          path="/bar/:id"
           render={ (props) =>{
             let id = props.match.params.id
-            let bar = this.state.bars.find(bar => bar.id === parseInt(id))
+            let bar = this.state.bars.businesses.find(bar => bar.id == id)
+            console.log("bar", bar)
+            console.log("id", id)
             return (
               <BarShow 
                 bar={ bar }
@@ -99,6 +89,7 @@ class App extends React.Component {
             )
           }}
         />
+        
 
     {/* -----Bar Crawl Edit Route----- */}
     <Route path="/editbarcrawl" component={ BarCrawlEditP } />

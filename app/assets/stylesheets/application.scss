@@ -37,7 +37,7 @@ a.button-dark{
     background-color:$dark-purp;
     border:0.1em solid $dark-purp;
     text-transform: uppercase;
-    margin-top: 5spx;
+    margin-top: 5px;
     }
     a.button-dark:hover{
     color:$medium-purp;
@@ -64,7 +64,7 @@ a.button{
     background-color:$yellow;
     border:0.1em solid $yellow;
     text-transform: uppercase;
-    margin-top: 5spx;
+    margin-top: 5px;
     }
     a.button:hover{
     color:$dark-yellow-text;
@@ -156,53 +156,42 @@ a.button{
 
 //TopCrawls COMPONENT
 .top-crawls-container{
-    display: flex;
-    justify-items: flex-start;
-    justify-content: space-between;
-    width: 100vw;
-    height: 300px;
+    min-height: 300px;
     margin-top: 50px;
     background-color: $medium-purp;
     padding: 20px 50px;
 }
 
-.top-crawls-card-container{
-    display: flex;
-    padding: 15px;
-    background-color: grey;
-    width: 24%;
-    height: 98%;
-    border-radius: 20px;
-}
 
 .top-crawls-heading-container{
     padding: 15px;
-    width: 24%;
     height: 98%;
 }
 
-.top-crawls-card-container:after {
-    content: "";
-    display: table;
-    clear: both;
- }
- @media screen and (max-width: 600px) {
-    .card {
-       width: 100%;
-    }
- }
+.card-header{
+    background-color: $light-orange;
+}
+
 
  //SignInBanner COMPONENT
 .sign-in-banner{
-    display: inline-flex;
-    justify-content: center;
     width: 100vw;
-    height: 150px;
+    min-height: 150px;
     margin-top: 50px;
+    margin-bottom: 70px;
+    padding-right: 50px;
+    padding-left: 50px;
 }
-.sign-in-banner-buttons{
-    display: inline-flex;
+
+.sign-up-buttons{
+    display: flex;
+    max-height: 65px;
 }
+
+.spacer{
+    width: 30px;
+}
+
 
 //barindex & barshow
 

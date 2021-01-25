@@ -9,6 +9,12 @@ const mockBars = [
         name: "Phil's BBQ",
         image_url: "https://s3-media2.fl.yelpcdn.com/bphoto/IijLAPbkYwMrvcMgNo_8vw/o.jpg",
         url: "https://www.yelp.com/biz/phils-bbq-san-diego-2?adjust_creative=q8w7wKNQ1Uxq2hK-ANhusw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=q8w7wKNQ1Uxq2hK-ANhusw",
+        categories: [
+                {
+                  alias: "Sports Bars",
+                  title: "Sports Bars"
+                }
+              ],
         rating: 4.5,
         address1: "3750 Sports Arena Blvd",
         address2: "",
@@ -29,6 +35,12 @@ const mockBars = [
         name: "Donut Bar",
         image_url: "https://s3-media3.fl.yelpcdn.com/bphoto/-83lj_J9zeSX2FXmIRV5JQ/o.jpg",
         url: "https://www.yelp.com/biz/donut-bar-san-diego?adjust_creative=q8w7wKNQ1Uxq2hK-ANhusw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=q8w7wKNQ1Uxq2hK-ANhusw",
+        categories: [
+                {
+                  alias: "Cocktail Bars",
+                  title: "Cocktail Bars"
+                }
+              ],
         rating: 4.0,
         address1: "631 B St",
         address2: null,
@@ -49,6 +61,12 @@ const mockBars = [
         name: "Great Maple - Hillcrest",
         image_url: "https://s3-media1.fl.yelpcdn.com/bphoto/n4BIvf30ZFKpS9GV0mc_tQ/o.jpg",
         url: "https://www.yelp.com/biz/great-maple-hillcrest-san-diego?adjust_creative=q8w7wKNQ1Uxq2hK-ANhusw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=q8w7wKNQ1Uxq2hK-ANhusw",
+        categories: [
+                {
+                  alias: "Whiskey Bars",
+                  title: "Whiskey Bars"
+                }
+              ],
         rating: 4.0,
         address1: "1451 Washington St",
         address2: "",
@@ -69,6 +87,12 @@ const mockBars = [
         name: "Bud's Louisiana Cafe",
         image_url: "https://s3-media3.fl.yelpcdn.com/bphoto/JZxUzZxbbsxKbG1bK9Bqhg/o.jpg",
         url: "https://www.yelp.com/biz/buds-louisiana-cafe-san-diego?adjust_creative=q8w7wKNQ1Uxq2hK-ANhusw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=q8w7wKNQ1Uxq2hK-ANhusw",
+        categories: [
+                {
+                  alias: "Whiskey Bars",
+                  title: "Whiskey Bars"
+                }
+              ],
         rating: 4.5,
         address1: "4320 Viewridge Ave",
         address2: "Ste A",

@@ -12,18 +12,14 @@ const{
           } = this.props
 
       return (
-        <Row xs="3" className= "sign-in-banner">
+        <Row className= "sign-in-banner  flex-column-reverse flex-md-row">
 
-            <Col className="sign-in-banner-buttons" xs="6" sm="4">
-                <Col>
+            <Col className="sign-up-buttons">
             <NavLink className= "button" href = { sign_in_route }>Sign In</NavLink>
-                </Col>
-                <Col>
-                <NavLink className= "button-dark" href = { sign_up_route }>Sign Up</NavLink>
-                </Col>
+            <div className="spacer"></div>
+            <NavLink className= "button-dark spacer-left" href = { sign_up_route }>Sign Up</NavLink>
             </Col>
-
-            <Col className="signup-cards-container" xs="6" sm="4">
+            <Col>
                 <h2>Join the Fun & Save Your Favorite Routes </h2>
             </Col>
 
