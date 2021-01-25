@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_211619) do
+ActiveRecord::Schema.define(version: 2021_01_25_192533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bars", force: :cascade do |t|
+    t.string "yelp_id"
+    t.string "name"
+    t.string "image_url"
+    t.string "categories"
+    t.float "rating"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
+    t.string "city"
+    t.string "zip_code"
+    t.string "country"
+    t.string "state"
+    t.string "display_address"
+    t.string "phone"
+    t.string "display_phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "crawl_bars", force: :cascade do |t|
+    t.bigint "bar_id"
+    t.bigint "crawl_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bar_id"], name: "index_crawl_bars_on_bar_id"
+    t.index ["crawl_id"], name: "index_crawl_bars_on_crawl_id"
+  end
+
+  create_table "crawls", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
