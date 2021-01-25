@@ -1,4 +1,7 @@
-import React, { Component }  from "react"
+import React from "react"
+
+//mock Data
+import mockBars from './pages/mockBars.js'
 
 //Components
 import Header from './components/Header'
@@ -19,32 +22,83 @@ import {
   Switch
 } from 'react-router-dom'
 
-class App extends Component {
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      bars: mockBars
+    }
+  } 
+
   render () {
+
+//info about whats happening with logged in users etc
+    console.log("mockBars test",this.state.bars)
+    console.log("logged in", this.props.logged_in)
+    console.log("current user", this.props.current_user)
+    console.log(this.state.bars)
+
+
     return (
 
 <Router>
 
-<Header 
+      <Header 
           logged_in={ this.props.logged_in }
           sign_in_route = { this.props.sign_in_route }
           sign_out_route = { this.props.sign_out_route }
           sign_up_route = { this.props.sign_up_route }
           new_user_route={ this.props.new_user_route }
-          />
+        />
 
   <Switch>
     {/* -----Home Route----- */}
-    <Route exact path="/" component={ Home } />
+      <Route exact path="/" 
+            render={ (props) => 
+            <Home           
+              sign_in_route = { this.props.sign_in_route }
+              sign_out_route = { this.props.sign_out_route }
+              sign_up_route = { this.props.sign_up_route }
+              new_user_route={ this.props.new_user_route } 
+            /> 
+        } 
+      />
 
     {/* -----About Us Page Route----- */}
-    <Route path="/about" component={ AboutUs } />
+      <Route path="/about" component={ AboutUs } 
+      />
 
     {/* -----Bar Index (Search Page) Route----- */}
-    <Route path="/barindex" component={ BarIndex } />
+      <Route 
+            path="/barindex"
+            render= { (props) =>
+        <BarIndex
+              bars = { this.state.bars}
+              sign_in_route = { this.props.sign_in_route }
+              sign_out_route = { this.props.sign_out_route }
+              sign_up_route = { this.props.sign_up_route }
+              new_user_route={ this.props.new_user_route } 
+              />
+            }
+      />
 
     {/* -----Bar Show Route----- */}
-    <Route path="/barshow" component={ BarShow } />
+    <Route 
+          path="/barshow/:id"
+          render={ (props) =>{
+            let id = props.match.params.id
+            let bar = this.state.bars.find(bar => bar.id === parseInt(id))
+            return (
+              <BarShow 
+                bar={ bar }
+                sign_in_route = { this.props.sign_in_route }
+                sign_out_route = { this.props.sign_out_route }
+                sign_up_route = { this.props.sign_up_route }
+                new_user_route={ this.props.new_user_route }  />
+            )
+          }}
+        />
 
     {/* -----Bar Crawl Edit Route----- */}
     <Route path="/editbarcrawl" component={ BarCrawlEditP } />
@@ -54,11 +108,13 @@ class App extends Component {
 
     {/* -----NotFound Route----- */}
     <Route component={ NotFound } />
+
   </Switch>
-  <Footer 
+        <Footer 
           sign_in_route = { this.props.sign_in_route }
           sign_out_route = { this.props.sign_out_route }
-          sign_up_route = { this.props.sign_up_route }/>
+          sign_up_route = { this.props.sign_up_route }
+        />
           
 </Router>
 

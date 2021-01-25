@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SanDiegoMap from '../../assets/sandiegomap.png'
 import { Form, FormGroup, Input } from 'reactstrap'
+import TopCrawls from '../components/TopCrawls'
+import SignInBanner from '../components/SignInBanner'
+
 
 class Home extends Component {
   render () {
@@ -35,11 +38,12 @@ class Home extends Component {
             <a className= "button" href = '/'>Search</a>
           </div>
         </div>
-        <div className= "top-crawlz-container">
+        < TopCrawls />
+        < SignInBanner 
+                sign_in_route = { this.props.sign_in_route }
+                sign_up_route = { this.props.sign_up_route }
+                new_user_route={ this.props.new_user_route }/>
         </div>
-        <div className= "favorite-routes-container">
-        </div>
-      </div>
     );
   }
 }

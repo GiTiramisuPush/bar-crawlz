@@ -1,80 +1,120 @@
 // SASS file
 @import 'bootstrap';
 
-//@at-root
 
-$theme-colors: (
-  "dark-purp": #00227B,
-  "medium-purp": #3949AB,
-  "light-purp": #6F74DD,
-  "light-orange": #FFB74D,
-  "yellow": #FFE97D,
-  "dark-yellow": #C88719
 
-);
+//THEME COLORS
+  $dark-purp: #00227B;
+  $medium-purp: #3949AB;
+  $light-purp: #6F74DD;
+  $light-orange: #FFB74D;
+  $yellow: #FFE97D;
+  $dark-yellow-text: #C88719;
+  $dark-text: #000000;
+  $light-text: #ffffff;
+  $light-grey: #d7d7d7;
 
-h1{
-    color: #C88719;
+//text styles
+h1, h2{
+    color: $dark-yellow-text;
 }
 
-h2{
-    color: #C88719;
+h2.dark-background-text{
+    color: $light-text;
 }
 
-a.button{
+//buttons
+a.button-dark{
     display:inline-block;
-    padding:0.35em 1.2em;
+    padding: 15px 30px;
     margin:0 0.3em 0.3em 0;border-radius:10px;
     box-sizing: border-box;
     text-decoration:none;
     font-weight: bold;
-    color:#000000;
+    color:#ffffff;
     text-align:center;
     transition: all 0.2s;
-    background-color:#FFE97D;
-    border:0.1em solid #FFE97D;
+    background-color:$dark-purp;
+    border:0.1em solid $dark-purp;
     text-transform: uppercase;
     margin-top: 5spx;
     }
-    a.button:hover{
-    color:#C88719;
+    a.button-dark:hover{
+    color:$medium-purp;
     background-color:#FFffff;
-    border: 2px solid #C88719;
+    border: 2px solid $medium-purp;
     }
     @media all and (max-width:30em){
-    a.button1{
+    a.button-dark{
     display:block;
     margin:0.4em auto;
     }
 }
 
-
-.navbar {
-    background-color: #00227B;
-    color: white;
+a.button{
+    display:inline-block;
+    padding: 15px 30px;
+    margin:0 0.3em 0.3em 0;border-radius:10px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight: bold;
+    color:$dark-text;
+    text-align:center;
+    transition: all 0.2s;
+    background-color:$yellow;
+    border:0.1em solid $yellow;
+    text-transform: uppercase;
+    margin-top: 5spx;
+    }
+    a.button:hover{
+    color:$dark-yellow-text;
+    background-color: white;
+    border: 2px solid $dark-yellow-text;
+    }
+    @media all and (max-width:30em){
+    a.button{
+    display:block;
+    margin:0.4em auto;
+    }
 }
+
+.button-group{
+    background-color: white;
+}
+
+
+
+//navs/header/footer
+.navbar {
+    background-color: $dark-purp;
+    color: $light-text;
+}
+.nav-link{
+        color:$light-text;
+    }
+    .nav-link:hover{
+        color:$light-purp;
+    }
 
 .footer {
-    position: fixed;
-    display: flex;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #00227B;
-    color: white;
-    text-align: center;
-    z-index: 3;
- }
- .nav-link{
-        color:white;
-    }
-.nav-link:hover{
-        color:#6F74DD;
-    }
+        position: fixed;
+        display: flex;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: $dark-purp;
+        color: $light-text;
+        text-align: center;
+        z-index: 3;
+     }
 
-//used on all pages to hold content
+//used on all pages to add space above content so it doesn't get covered by the header
 .page-container{
+    margin-top: 100px;
 }
+
+
+//herosection on homepage/search page
 .hero-container{
     display: flex;
     height: 400px;
@@ -114,15 +154,89 @@ a.button{
     margin-right: 10px;
 }
 
-.top-crawlz-container{
+//TopCrawls COMPONENT
+.top-crawls-container{
     display: flex;
+    justify-items: flex-start;
+    justify-content: space-between;
     width: 100vw;
     height: 300px;
-    background-color: #3949AB;
+    margin-top: 50px;
+    background-color: $medium-purp;
+    padding: 20px 50px;
 }
 
-.favorite-routes-container{
+.top-crawls-card-container{
     display: flex;
-    width: 100vw;
-    height: 300px;
+    padding: 15px;
+    background-color: grey;
+    width: 24%;
+    height: 98%;
+    border-radius: 20px;
 }
+
+.top-crawls-heading-container{
+    padding: 15px;
+    width: 24%;
+    height: 98%;
+}
+
+.top-crawls-card-container:after {
+    content: "";
+    display: table;
+    clear: both;
+ }
+ @media screen and (max-width: 600px) {
+    .card {
+       width: 100%;
+    }
+ }
+
+ //SignInBanner COMPONENT
+.sign-in-banner{
+    display: inline-flex;
+    justify-content: center;
+    width: 100vw;
+    height: 150px;
+    margin-top: 50px;
+}
+.sign-in-banner-buttons{
+    display: inline-flex;
+}
+
+//barindex & barshow
+
+.bar-img-thumbnail {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+.bar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bar-details-card {
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+   align-items: center;
+   max-width: 800px;
+}
+
+.bar-info{
+
+}
+
+.bar-img-container{
+    max-width: 500px;
+    min-width: 300px;
+    margin-bottom:10px;
+}
+
+

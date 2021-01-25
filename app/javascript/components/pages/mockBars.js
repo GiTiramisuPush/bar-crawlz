@@ -1,4 +1,6 @@
-const barsSanDiego = [
+
+
+const mockBars = [
 // Bar1
         {
         id:1,
@@ -15,10 +17,9 @@ const barsSanDiego = [
         zip_code: "92110",
         country: "US",
         state: "CA",
-        display_address: "3750 Sports Arena Blvd","San Diego, CA 92110",
+        display_address: "3750 Sports Arena Blvd, San Diego, CA 92110",
         phone: "+16192266333",
         display_phone: "(619) 226-6333",
-        // crawl_id: 1
         },
 // Bar2
         {
@@ -39,7 +40,6 @@ const barsSanDiego = [
         display_address:"631 B St,San Diego, CA 92101",
         phone: "+16192556360",
         display_phone: "(619) 255-6360",
-        // crawl_id: 1
         },
 // Bar3
         {
@@ -57,10 +57,9 @@ const barsSanDiego = [
         zip_code: "92103",
         country: "US",
         state: "CA",
-        display_address: "1451 Washington St", "San Diego, CA 92103",
+        display_address: "1451 Washington St, San Diego, CA 92103",
         phone: "+16192552282",
         display_phone: "(619) 255-2282",
-        // crawl_id: 1
         },
 // Bar4
         {
@@ -73,15 +72,14 @@ const barsSanDiego = [
         rating: 4.5,
         address1: "4320 Viewridge Ave",
         address2: "Ste A",
-        address3": "",
+        address3: "",
         city: "San Diego",
-        zip_code": "92123",
-        country": "US",
+        zip_code: "92123",
+        country: "US",
         state: "CA",
         display_address:"4320 Viewridge Ave,Ste A,San Diego, CA 92123",
         phone: "+18585732837",
         display_phone: "(858) 573-2837",
-        // crawl_id: 1
         },
 // Bar5
         {
@@ -91,18 +89,17 @@ const barsSanDiego = [
         name: "La Puerta",
         image_url: "https://s3-media4.fl.yelpcdn.com/bphoto/2A8xgPCHLPtwtpw0mvpVlw/o.jpg",
         url: "https://www.yelp.com/biz/la-puerta-san-diego?adjust_creative=q8w7wKNQ1Uxq2hK-ANhusw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=q8w7wKNQ1Uxq2hK-ANhusw",
-        rating": 4.0,
+        rating: 4.0,
         address1: "560 4th Ave",
         address2: "",
         address3: "",
         city: "San Diego",
         zip_code: "92101",
-        country": "US",
-        state": "CA",
+        country: "US",
+        state: "CA",
         display_address:"560 4th Ave,San Diego, CA 92101",
         phone: "+16196963466",
         display_phone: "(619) 696-3466",
-        // crawl_id: 1
         },
 // Bar6
         {
@@ -123,6 +120,7 @@ const barsSanDiego = [
         display_address: "4651 Park Blvd San Diego, CA 92116",
         phone: "+16195467900",
         display_phone: "(619) 546-7900",
-        // crawl_id: 1
         }
 ]
+
+export default mockBars
