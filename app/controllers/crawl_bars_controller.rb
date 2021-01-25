@@ -1,0 +1,2 @@
+class CrawlBarsController < ApplicationController
+end

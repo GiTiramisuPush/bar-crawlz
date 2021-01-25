@@ -42,20 +42,14 @@ $ yarn add react-router-dom
 - Added Header.js, Footer.js to Home page
 - Added conditional rendering to make sure devise 
 
-## Relationships
-
-
 ## mockData
 
 -mockData for bars
 -mockData for a single barCrawl
 
 
-
-
-
 $ rails g resource Crawl title:string user_id:integer
-$ rails g resource Bar yelp_id:string name:string image-url:string rating:float address1:string address2:string address3:string city:string zip_code:integer country:string state:string display_address:string phone:string display_phone:string
+$ rails g resource Bar yelp_id:string name:string image-url:string categories:string rating:float address1:string address2:string address3:string city:string zip_code:string country:string state:string display_address:string phone:string display_phone:string
 $ rails g resource CrawlBar bar_id:references crawl_id:references
 
 - adding associations : has_many :through
@@ -77,13 +71,8 @@ belongs_to :bars
 end
 
 
-## add a column of Bars in the schema to populate the bar crawl with a list of bars?
-
-
 ## to do list:
-
-protected index
-controller methods
-application_controller : add token
+- Finalize controller methods 
+- 
 
 
