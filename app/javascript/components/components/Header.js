@@ -7,11 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
 import HorizontalLogo from '../../assets/horizontallogo.png'
 
@@ -34,7 +29,7 @@ const Header = (props) => {
   return (
 <div>
     <Navbar 
-        className="navbar"
+        className="navbar-top"
         expand="md"
         fixed="top">
     <NavbarBrand className= "nav-link" href="/"><img className = "navbar-logo" src = { HorizontalLogo } /></NavbarBrand>

@@ -105,7 +105,7 @@ a.button:hover{
 
 
 //navs/header/footer
-.navbar {
+.navbar-top {
     background-color: $dark-purp;
     color: $light-text;
     border-bottom: 10px solid $medium-purp
@@ -121,9 +121,6 @@ a.button:hover{
     }
 
 .footer {
-        position: fixed;
-        display: flex;
-        justify-content: right;
         bottom: 0;
         width: 100%;
         background-color: $dark-purp;
@@ -132,6 +129,14 @@ a.button:hover{
      }
 .navbar-logo {
     max-width: 200px;
+}
+
+.footer-logo {
+    max-width: 100px;
+}
+.navbar-logo:hover, .footer-logo:hover{
+    transform: rotate(2deg);
+    transition: .2s ease-in-out;
 }
 
 //used on all pages to add space above content so it doesn't get covered by the header
@@ -205,7 +210,7 @@ a.button:hover{
     width: 100vw;
     min-height: 150px;
     margin-top: 50px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     padding-right: 50px;
     padding-left: 50px;
 }
@@ -282,5 +287,3 @@ a.button:hover{
     border-radius: 10px;
     overflow: hidden;
   }
-
-
