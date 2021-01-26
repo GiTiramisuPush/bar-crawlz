@@ -10,16 +10,20 @@ const Footer = (props) => {
     return (
 
         <div className= 'footer'>
+            <div>
                     <NavLink 
                         className= 'nav-link' 
                         href={ props.sign_in_route }>
                       Sign In
                     </NavLink>
+            </div>
+            <div>
                     <NavLink 
                         className= 'nav-link'
                         href={ props.sign_up_route }>
                       Sign Up
                     </NavLink>
+                    </div>
         </div>
 
     );

@@ -30,12 +30,17 @@ class BarShow extends Component {
         <p><b>{ bar.display_phone }</b></p>
         <p>
           <b>Rating: </b>{ bar.rating }
-          </p>
+        </p>
+      <div className= "bar-categories-container">
+          { bar.categories.map((category, index) => {
+          return (<span className = "outlined-text" key= { index } > { category.title }</span>) })
+          }
+      </div>
           <Row>
           <Col>
             <a className = 'button' 
             href= { bar.url }>
-              Visit Website
+              Visit Yelp Page
             </a>
             </Col>
             <Col>

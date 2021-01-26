@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SanDiegoMap from '../../assets/sandiegomap.png'
-import { Form, FormGroup, Input } from 'reactstrap'
+import { Form, FormGroup, Input, Row, Col } from 'reactstrap'
 
 //components
 import TopCrawls from '../components/TopCrawls'
@@ -44,12 +44,12 @@ class Home extends Component {
   render () {
     return (
       <div className= "page-container">
-        <div className= "hero-container">
-          <div className= "map-image-container">
+        <Row className= "hero-container">
+          <Col className= "map-image-container">
             <img className= "map-image"
             src = { SanDiegoMap } />
-          </div>
-          <div className= "hero-text-div">
+          </Col>
+          <Col className= "hero-text-div">
             <h1 className="hero-text">
             Drink to Discover a New City!
             </h1>
@@ -77,8 +77,8 @@ class Home extends Component {
               </FormGroup>
               </Form>
             <button className= "button" onClick= { this.handleSubmit } >Search</button>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
         {/* if viewToggle is false, then the topcrawls component shows */}
         { !this.state.viewToggle && <TopCrawls />}
@@ -87,6 +87,8 @@ class Home extends Component {
         { this.state.viewToggle && 
           <BarIndex 
             bars = { this.props.bars}
+            location = {this.state.form.location}
+            term = {this.state.form.term}
               />}
 
         < SignInBanner 

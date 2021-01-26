@@ -13,6 +13,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import HorizontalLogo from '../../assets/horizontallogo.png'
 
 
 const Header = (props) => {
@@ -36,7 +37,7 @@ const Header = (props) => {
         className="navbar"
         expand="md"
         fixed="top">
-    <NavbarBrand className= "nav-link" href="/">BARCRAWLZ</NavbarBrand>
+    <NavbarBrand className= "nav-link" href="/"><img className = "navbar-logo" src = { HorizontalLogo } /></NavbarBrand>
     <NavbarToggler onClick={toggle} className="mr-2" />
     <Collapse isOpen={isOpen} navbar>
       <Nav className="mr-auto" navbar>

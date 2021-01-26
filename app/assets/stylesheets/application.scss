@@ -23,8 +23,23 @@ h2.dark-background-text{
     color: $light-text;
 }
 
+.outlined-text{
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: 2px solid $light-purp;
+    color: $medium-purp;
+}
+
+.outlined-text:hover{
+    color: $light-purp;
+    transform: rotate(2deg);
+    transition: .2s ease-in-out;
+}
+
 //buttons
-a.button-dark{
+.button-dark{
     display:inline-block;
     padding: 15px 30px;
     margin:0 0.3em 0.3em 0;border-radius:10px;
@@ -39,26 +54,26 @@ a.button-dark{
     text-transform: uppercase;
     margin-top: 5px;
     }
-    a.button-dark:hover{
+    .button-dark:hover{
     color:$medium-purp;
     background-color:#FFffff;
     border: 2px solid $medium-purp;
+    text-decoration: none;
     }
     @media all and (max-width:30em){
-    a.button-dark{
+    .button-dark{
     display:block;
     margin:0.4em auto;
     }
 }
 
-a.button{
+.button{
     display:inline-block;
     padding: 15px 30px;
     margin:0 0.3em 0.3em 0;border-radius:10px;
     box-sizing: border-box;
     text-decoration:none;
     font-weight: bold;
-    color:$dark-text;
     text-align:center;
     transition: all 0.2s;
     background-color:$yellow;
@@ -66,21 +81,26 @@ a.button{
     text-transform: uppercase;
     margin-top: 5px;
     }
-    a.button:hover{
-    color:$dark-yellow-text;
+    .button:hover{
     background-color: white;
+    color: $dark-yellow-text;
     border: 2px solid $dark-yellow-text;
+    text-decoration: none;
     }
     @media all and (max-width:30em){
-    a.button{
+    .button{
     display:block;
     margin:0.4em auto;
     }
 }
 
-.button-group{
-    background-color: white;
+a.button{
+    color:$dark-text;
 }
+a.button:hover{
+    color:$dark-yellow-text;
+}
+
 
 
 
@@ -88,9 +108,13 @@ a.button{
 .navbar {
     background-color: $dark-purp;
     color: $light-text;
+    border-bottom: 10px solid $medium-purp
 }
 .nav-link{
         color:$light-text;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold
     }
     .nav-link:hover{
         color:$light-purp;
@@ -99,14 +123,16 @@ a.button{
 .footer {
         position: fixed;
         display: flex;
-        left: 0;
+        justify-content: right;
         bottom: 0;
         width: 100%;
         background-color: $dark-purp;
         color: $light-text;
-        text-align: center;
         z-index: 3;
      }
+.navbar-logo {
+    max-width: 200px;
+}
 
 //used on all pages to add space above content so it doesn't get covered by the header
 .page-container{
@@ -117,13 +143,13 @@ a.button{
 //herosection on homepage/search page
 .hero-container{
     display: flex;
-    height: 400px;
-    margin-top: 100px;
+    min-height: 400px;
+    margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
 }
 .map-image-container{
-    width: 500px;
+    min-width: 400px;
     height: 350px;
     overflow: hidden;
     border-radius: 20px;
@@ -136,12 +162,8 @@ a.button{
     object-fit: cover;
 }
 
-.hero-text-div{
-    margin-left: 10px;
-    padding-top: 20px;
-}
 .hero-text{
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .search-form{
@@ -160,6 +182,11 @@ a.button{
     margin-top: 50px;
     background-color: $medium-purp;
     padding: 20px 50px;
+}
+
+.top-crawls-card:hover{
+    transform: rotate(1deg);
+    transition: .2s ease-in-out;
 }
 
 
@@ -193,7 +220,7 @@ a.button{
 }
 
 
-//barindex & barshow
+//barshow page & barindex component
 
 .bar-img-thumbnail {
     width: 150px;
@@ -215,11 +242,12 @@ a.button{
     padding: 20px;
     text-align: left;
    align-items: center;
-   max-width: 800px;
+   max-width: 1000px;
 }
 
-.bar-info{
-
+.bar-categories-container {
+    display: flex;
+    margin-bottom: 10px;
 }
 
 .bar-img-container{
@@ -227,5 +255,32 @@ a.button{
     min-width: 300px;
     margin-bottom:10px;
 }
+
+
+.scroll-container{
+    margin-top: 50px;
+    padding: 20px;
+    max-height: 500px;
+    overflow: scroll;
+    border-top: 2px solid $medium-purp;
+    border-bottom: 2px solid $medium-purp;
+}
+
+.bar-card {
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+   max-height: 200px;
+   display: flex;
+}
+
+.bar-search-thumbnail {
+    max-width: 300px;
+    max-height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 
 

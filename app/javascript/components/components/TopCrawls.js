@@ -8,7 +8,7 @@ class TopCrawls extends Component {
           <Col className="top-crawls-heading-container">
             <h2 className="dark-background-text">Top BarCrawls in the US</h2>
           </Col>
-          <Card>
+          <Card className= "top-crawls-card">
         <CardHeader className= "card-header" tag="h3">Featured Crawl</CardHeader>
         <CardBody>
         <CardImg 
@@ -17,7 +17,7 @@ class TopCrawls extends Component {
           alt="featured crawl" />
         </CardBody>
       </Card>
-      <Card>
+      <Card className= "top-crawls-card">
         <CardHeader className= "card-header" tag="h3">Featured Crawl</CardHeader>
         <CardBody>
         <CardImg 
@@ -26,7 +26,7 @@ class TopCrawls extends Component {
           alt="featured crawl" />
         </CardBody>
       </Card>
-      <Card>
+      <Card className= "top-crawls-card">
         <CardHeader className= "card-header" tag="h3">Featured Crawl</CardHeader>
         <CardBody>
         <CardImg 
