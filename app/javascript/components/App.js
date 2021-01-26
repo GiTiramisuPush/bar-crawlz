@@ -29,7 +29,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bars: mockBars
+      bars: mockBars,
+      crawls: mockCrawls
     }
   } 
 
@@ -97,7 +98,21 @@ class App extends React.Component {
     <Route path="/editbarcrawl" component={ BarCrawlEditP } />
 
     {/* -----User Dashboard Route----- */}
-    <Route path="/userdashboard" component={ UserDashboardP } />
+    { this.props.logged_in &&
+    <Route
+       path="/userdashboard"
+       render={ (props) =>{
+        let id = this.props.current_user.id
+        let crawls = this.state.crawls.filter(crawl => crawl.user_id === id)
+        console.log("my crawls", crawls)
+        return(
+          <UserDashboardP 
+            crawls={ crawls }
+            sign_out_route = { this.props.sign_out_route } />
+        )
+      }}
+    />
+  }
 
     {/* -----NotFound Route----- */}
     <Route component={ NotFound } />

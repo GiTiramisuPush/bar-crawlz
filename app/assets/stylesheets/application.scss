@@ -19,9 +19,10 @@ h1, h2{
     color: $dark-yellow-text;
 }
 
-h2.dark-background-text{
+h1.dark-background-text, h2.dark-background-text, p.dark-background-text{
     color: $light-text;
 }
+
 
 .outlined-text{
     padding: 10px;
@@ -338,4 +339,11 @@ a.button:hover{
     padding-top: 10px;
     margin-right: 10px;
     min-width: 250px
+}
+
+//User Dashboard Page & BarCrawl Edit
+
+.purple-background{
+    background-color: $medium-purp;
+    padding: 150px 50px;
 }
