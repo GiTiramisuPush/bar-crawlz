@@ -1,89 +1,160 @@
 // SASS file
 @import 'bootstrap';
 
-//@at-root
 
-$theme-colors: (
-  "dark-purp": #00227B,
-  "medium-purp": #3949AB,
-  "light-purp": #6F74DD,
-  "light-orange": #FFB74D,
-  "yellow": #FFE97D,
-  "dark-yellow": #C88719
 
-);
+//THEME COLORS
+  $dark-purp: #00227B;
+  $medium-purp: #3949AB;
+  $light-purp: #6F74DD;
+  $light-orange: #FFB74D;
+  $yellow: #FFE97D;
+  $dark-yellow-text: #C88719;
+  $dark-text: #000000;
+  $light-text: #ffffff;
+  $light-grey: #d7d7d7;
 
-h1{
-    color: #C88719;
+//text styles
+h1, h2{
+    color: $dark-yellow-text;
 }
 
-h2{
-    color: #C88719;
+h2.dark-background-text{
+    color: $light-text;
 }
 
-a.button{
+.outlined-text{
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: 2px solid $light-purp;
+    color: $medium-purp;
+}
+
+.outlined-text:hover{
+    color: $light-purp;
+    transform: rotate(2deg);
+    transition: .2s ease-in-out;
+}
+
+//buttons
+.button-dark{
     display:inline-block;
-    padding:0.35em 1.2em;
+    padding: 15px 30px;
     margin:0 0.3em 0.3em 0;border-radius:10px;
     box-sizing: border-box;
     text-decoration:none;
     font-weight: bold;
-    color:#000000;
+    color:#ffffff;
     text-align:center;
     transition: all 0.2s;
-    background-color:#FFE97D;
-    border:0.1em solid #FFE97D;
+    background-color:$dark-purp;
+    border:0.1em solid $dark-purp;
     text-transform: uppercase;
-    margin-top: 5spx;
+    margin-top: 5px;
     }
-    a.button:hover{
-    color:#C88719;
+    .button-dark:hover{
+    color:$medium-purp;
     background-color:#FFffff;
-    border: 2px solid #C88719;
+    border: 2px solid $medium-purp;
+    text-decoration: none;
     }
     @media all and (max-width:30em){
-    a.button1{
+    .button-dark{
     display:block;
     margin:0.4em auto;
     }
 }
 
-
-.navbar {
-    background-color: #00227B;
-    color: white;
+.button{
+    display:inline-block;
+    padding: 15px 30px;
+    margin:0 0.3em 0.3em 0;border-radius:10px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight: bold;
+    text-align:center;
+    transition: all 0.2s;
+    background-color:$yellow;
+    border:0.1em solid $yellow;
+    text-transform: uppercase;
+    margin-top: 5px;
+    }
+    .button:hover{
+    background-color: white;
+    color: $dark-yellow-text;
+    border: 2px solid $dark-yellow-text;
+    text-decoration: none;
+    }
+    @media all and (max-width:30em){
+    .button{
+    display:block;
+    margin:0.4em auto;
+    }
 }
+
+a.button{
+    color:$dark-text;
+}
+a.button:hover{
+    color:$dark-yellow-text;
+}
+
+
+
+
+//navs/header/footer
+.navbar-top {
+    background-color: $dark-purp;
+    color: $light-text;
+    border-bottom: 10px solid $medium-purp
+}
+.nav-link{
+        color:$light-text;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold
+    }
+    .nav-link:hover{
+        color:$light-purp;
+    }
 
 .footer {
-    position: fixed;
-    display: flex;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #00227B;
-    color: white;
-    text-align: center;
-    z-index: 3;
- }
- .nav-link{
-        color:white;
-    }
-.nav-link:hover{
-        color:#6F74DD;
-    }
-
-//used on all pages to hold content
-.page-container{
+        bottom: 0;
+        width: 100%;
+        background-color: $dark-purp;
+        color: $light-text;
+        z-index: 3;
+     }
+.navbar-logo {
+    max-width: 200px;
 }
+
+.footer-logo {
+    max-width: 100px;
+}
+.navbar-logo:hover, .footer-logo:hover{
+    transform: rotate(2deg);
+    transition: .2s ease-in-out;
+}
+
+//used on all pages to add space above content so it doesn't get covered by the header
+.page-container{
+    margin-top: 100px;
+}
+
+
+//herosection on homepage/search page
 .hero-container{
     display: flex;
-    height: 400px;
-    margin-top: 100px;
+    min-height: 400px;
+    margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
 }
 .map-image-container{
-    width: 500px;
+    min-width: 400px;
     height: 350px;
     overflow: hidden;
     border-radius: 20px;
@@ -96,12 +167,8 @@ a.button{
     object-fit: cover;
 }
 
-.hero-text-div{
-    margin-left: 10px;
-    padding-top: 20px;
-}
 .hero-text{
-    padding-top: 10px;
+    padding-top: 15px;
 }
 
 .search-form{
@@ -114,15 +181,109 @@ a.button{
     margin-right: 10px;
 }
 
-.top-crawlz-container{
-    display: flex;
-    width: 100vw;
-    height: 300px;
-    background-color: #3949AB;
+//TopCrawls COMPONENT
+.top-crawls-container{
+    min-height: 300px;
+    margin-top: 50px;
+    background-color: $medium-purp;
+    padding: 20px 50px;
 }
 
-.favorite-routes-container{
-    display: flex;
-    width: 100vw;
-    height: 300px;
+.top-crawls-card:hover{
+    transform: rotate(1deg);
+    transition: .2s ease-in-out;
 }
+
+
+.top-crawls-heading-container{
+    padding: 15px;
+    height: 98%;
+}
+
+.card-header{
+    background-color: $light-orange;
+}
+
+
+ //SignInBanner COMPONENT
+.sign-in-banner{
+    width: 100vw;
+    min-height: 150px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.sign-up-buttons{
+    display: flex;
+    max-height: 65px;
+}
+
+.spacer{
+    width: 30px;
+}
+
+
+//barshow page & barindex component
+
+.bar-img-thumbnail {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  
+.bar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bar-details-card {
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+   align-items: center;
+   max-width: 1000px;
+}
+
+.bar-categories-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.bar-img-container{
+    max-width: 500px;
+    min-width: 300px;
+    margin-bottom:10px;
+}
+
+
+.scroll-container{
+    margin-top: 50px;
+    padding: 20px;
+    max-height: 500px;
+    overflow: scroll;
+    border-top: 2px solid $medium-purp;
+    border-bottom: 2px solid $medium-purp;
+}
+
+.bar-card {
+    border: 1px solid $light-grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+   max-height: 200px;
+   display: flex;
+}
+
+.bar-search-thumbnail {
+    max-width: 300px;
+    max-height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+  }

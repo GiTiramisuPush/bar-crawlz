@@ -23,7 +23,7 @@ const mockBarCrawl = [
                 zip_code: "91423",
                 country: "US",
                 state: "CA",
-                display_address:  "14311 Ventura Blvd", "Los Angeles, CA 91423",
+                display_address:  "14311 Ventura Blvd, Los Angeles, CA 91423",
                 phone: "+18582373991",
                 display_phone: "(619) 226-6333"
                 },
@@ -43,7 +43,7 @@ const mockBarCrawl = [
                 zip_code: "92110",
                 country: "US",
                 state: "CA",
-                display_address: "3750 Sports Arena Blvd","San Diego, CA 92110",
+                display_address: "3750 Sports Arena Blvd, San Diego, CA 92110",
                 phone: "+16192266333",
                 display_phone: "(619) 226-6333"
                 },
@@ -83,7 +83,7 @@ const mockBarCrawl = [
                 zip_code: "92103",
                 country: "US",
                 state: "CA",
-                display_address: "1451 Washington St", "San Diego, CA 92103",
+                display_address: "1451 Washington St, San Diego, CA 92103",
                 phone: "+16192552282",
                 display_phone: "(619) 255-2282"
                 }
