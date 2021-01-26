@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Row, Col, CardImg } from 'reactstrap'
+import { Row, Col, CardImg, Button } from 'reactstrap'
+
+//components
+import NewCrawlModal from '../components/NewCrawlModal'
 import TopCrawls from '../components/TopCrawls'
 import SignInBanner from '../components/SignInBanner'
 
 class BarShow extends Component {
+  // state = {
+  //   isOpen: false
+  // };
+
+  // //opens and closes the "NewCrawlModal" component
+  // openModal = () => this.setState({ isOpen: true });
+  // closeModal = () => this.setState({ isOpen: false });
+
+
   render () {
 
 
@@ -44,10 +56,20 @@ class BarShow extends Component {
             </a>
             </Col>
             <Col>
-            <a className = 'button-dark' 
-            href= '/'>
-              Add to Crawl
-            </a>
+            {/* conditionally render the add to crawl button with a link to the sign in route if the user is not logged in */}
+                {
+              !this.props.logged_in &&
+                <Button className = 'button-dark' 
+                href = { this.props.sign_in_route }>
+                  Add to Crawl
+                </Button>
+                  }
+            {/* if the user is logged in, conditionally render the modal to add the bar to a crawl */}
+                {
+                  this.props.logged_in &&
+                  < NewCrawlModal
+                  name = { bar.name } />
+                }
             </Col>
             </Row>
         </div>

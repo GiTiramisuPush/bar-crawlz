@@ -75,6 +75,7 @@ h2.dark-background-text{
     text-decoration:none;
     font-weight: bold;
     text-align:center;
+    color: $dark-text;
     transition: all 0.2s;
     background-color:$yellow;
     border:0.1em solid $yellow;
@@ -99,6 +100,35 @@ a.button{
 }
 a.button:hover{
     color:$dark-yellow-text;
+}
+
+.button-small{
+    display:inline-block;
+    padding: 8px 10px;
+    margin:0 0.3em 0.3em 0;
+    border-radius:5px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-weight: bold;
+    text-align:center;
+    color: $dark-text;
+    transition: all 0.2s;
+    background-color:$yellow;
+    border:0.1em solid $yellow;
+    text-transform: uppercase;
+    margin-top: 5px;
+    }
+    .button-small:hover{
+    background-color: white;
+    color: $dark-yellow-text;
+    border: 2px solid $dark-yellow-text;
+    text-decoration: none;
+    }
+    @media all and (max-width:30em){
+    .button-small{
+    display:block;
+    margin:0.4em auto;
+    }
 }
 
 
@@ -149,7 +179,7 @@ a.button:hover{
 .hero-container{
     display: flex;
     min-height: 400px;
-    margin-top: 120px;
+    margin-top: 140px;
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -202,6 +232,8 @@ a.button:hover{
 
 .card-header{
     background-color: $light-orange;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 
@@ -287,3 +319,23 @@ a.button:hover{
     border-radius: 10px;
     overflow: hidden;
   }
+
+//modal
+
+.modal-scroll-container{
+    margin-top: 10px;
+    padding: 20px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.modal-form{
+    display: flex;
+    justify-content:center;
+}
+
+.modal-form-field{
+    padding-top: 10px;
+    margin-right: 10px;
+    min-width: 250px
+}

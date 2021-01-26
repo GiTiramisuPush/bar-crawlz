@@ -1,8 +1,9 @@
 import React from "react"
 
 //mock Data
-// import mockBars from './pages/mockBars.js'
 import mockBars from './pages/yelpBarData.js'
+import mockCrawls from './pages/mockCrawls.js'
+
 
 //Components
 import Header from './components/Header'
@@ -82,6 +83,7 @@ class App extends React.Component {
             return (
               <BarShow 
                 bar={ bar }
+                logged_in={ this.props.logged_in }
                 sign_in_route = { this.props.sign_in_route }
                 sign_out_route = { this.props.sign_out_route }
                 sign_up_route = { this.props.sign_up_route }
