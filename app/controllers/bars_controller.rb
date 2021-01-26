@@ -1,0 +1,2 @@
+class BarsController < ApplicationController
+end
