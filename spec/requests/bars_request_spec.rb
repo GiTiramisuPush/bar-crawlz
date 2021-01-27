@@ -51,7 +51,7 @@ RSpec.describe "Bars", type: :request do
     expect(response).to have_http_status(200)
     end
 
-    it 'Adds a bar to a crawl' do
+    it 'deletes a bar from a crawl' do
         bar_params = {
             bar: {
             yelp_id: 'ahfasdf23', 
@@ -86,4 +86,7 @@ RSpec.describe "Bars", type: :request do
     # 
 
 
+
+
+    
 end

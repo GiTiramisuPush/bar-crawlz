@@ -4,6 +4,17 @@ class BarsController < ApplicationController
     
 def create
     crawl = Crawl.find(crawl_params[:id])
+
+    # crawl = Crawl.find_or_create_by(crawl_params[yelp_id:])
+    # bar = Bar.find_or_create_by(yelp_id: 'ahfasdf23')
+
+    bar = Bar.find_or_create_by(yelp_id: true)
+    
+    # bar = crawl.bars.find_or_create_by(bar_params) ?
+    #finding or creating a bar by.. maybe we can use :id?
+    # Find the first user named "PenÃ©lope" or create a new one.
+    # User.find_or_create_by(first_name: 'PenÃ©lope')
+    
     bar = crawl.bars.create(bar_params)
     if bar.valid?
         render json: bar
