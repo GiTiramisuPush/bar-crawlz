@@ -1,5 +1,4 @@
 ## READ ME
-
 ## App BUILDING commands
 $ rails new barcrawlz -d postgresql -T
 $ cd barcrawlz
@@ -31,10 +30,12 @@ $ bundle add bootstrap
 $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
 - Add an import to the "sass" file @import 'bootstrap'
 $ yarn add reactstrap
+
 ## React Router
 $ yarn add react-router-dom
 -Import components to App.js
 -Setup static routes to Home, Index, Show, NotFound
+
 ## Fix Webpacker Install Command
 - yarn add @rails/webpacker@4.3.0
 
@@ -43,15 +44,13 @@ $ yarn add react-router-dom
 - Added conditional rendering to make sure devise 
 
 ## mockData
-
 -mockData for bars
 -mockData for a single barCrawl
 
-
+## Creating resources
 $ rails g resource Crawl title:string user_id:integer
 $ rails g resource Bar yelp_id:string name:string image-url:string categories:string rating:float address1:string address2:string address3:string city:string zip_code:string country:string state:string display_address:string phone:string display_phone:string
 $ rails g resource CrawlBar bar_id:references crawl_id:references
-
 - adding associations : has_many :through
 class User < ApplicationRecord
 has_many :crawls
@@ -70,9 +69,14 @@ belongs_to :crawls
 belongs_to :bars
 end
 
+## TESTS
+-spec/models/bar_spec.rb
+-spec/models/crawl_spec.rb
+
+
 
 ## to do list:
-- Finalize controller methods 
+- Controller methods 
 - 
 
 
