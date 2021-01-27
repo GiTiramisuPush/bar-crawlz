@@ -1,8 +1,9 @@
 import React from "react"
 
 //mock Data
-// import mockBars from './pages/mockBars.js'
 import mockBars from './pages/yelpBarData.js'
+import mockCrawls from './pages/mockCrawls.js'
+
 
 //Components
 import Header from './components/Header'
@@ -28,9 +29,16 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bars: mockBars
+      bars: mockBars,
+      crawls: mockCrawls
     }
   } 
+
+  createNewCrawl = (newcrawl) => {
+    console.log(newcrawl)
+  }
+
+
 
   render () {
 
@@ -82,6 +90,8 @@ class App extends React.Component {
             return (
               <BarShow 
                 bar={ bar }
+                createNewCrawl={ this.createNewCrawl }
+                logged_in={ this.props.logged_in }
                 sign_in_route = { this.props.sign_in_route }
                 sign_out_route = { this.props.sign_out_route }
                 sign_up_route = { this.props.sign_up_route }
@@ -95,7 +105,21 @@ class App extends React.Component {
     <Route path="/editbarcrawl" component={ BarCrawlEditP } />
 
     {/* -----User Dashboard Route----- */}
-    <Route path="/userdashboard" component={ UserDashboardP } />
+    { this.props.logged_in &&
+    <Route
+       path="/userdashboard"
+       render={ (props) =>{
+        let id = this.props.current_user.id
+        let crawls = this.state.crawls.filter(crawl => crawl.user_id === id)
+        console.log("my crawls", crawls)
+        return(
+          <UserDashboardP 
+            crawls={ crawls }
+            sign_out_route = { this.props.sign_out_route } />
+        )
+      }}
+    />
+  }
 
     {/* -----NotFound Route----- */}
     <Route component={ NotFound } />
