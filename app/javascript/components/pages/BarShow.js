@@ -68,8 +68,11 @@ class BarShow extends Component {
                 {
                   this.props.logged_in &&
                   < NewCrawlModal
-                  name = { bar.name }
-                  createNewCrawl={ this.createNewCrawl } />
+                        crawls = { this.props.crawls }
+                        name = { bar.name }
+                        bar={ bar }
+                        createNewCrawl={ this.props.createNewCrawl }
+                        addBartoCrawl={ this.props.addBartoCrawl } />
                 }
             </Col>
             </Row>

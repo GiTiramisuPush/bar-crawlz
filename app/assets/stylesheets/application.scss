@@ -42,11 +42,10 @@ h1.dark-background-text, h2.dark-background-text, p.dark-background-text{
 a.light{
     color: $light-text;
     font-size: 35px;
-    text-decoration: none;
 
 }
 a.light:hover{
-    color: $light-purp;
+    color: $medium-purp;
 }
 .arrow-right {
     width: 0; 
@@ -56,7 +55,7 @@ a.light:hover{
     border-left: 30px solid white;
   }
   .arrow-right:hover{
-    border-left: 30px solid $light-purp;
+    border-left: 30px solid $medium-purp;
   }
 
 .arrow-left {
@@ -67,7 +66,7 @@ a.light:hover{
     border-right:30px solid white; 
   }
   .arrow-left:hover{
-    border-right:30px solid $light-purp; 
+    border-right:30px solid $medium-purp; 
   }
 
 //buttons
@@ -151,10 +150,20 @@ a.button:hover{
     margin-top: 5px;
     }
     .button-small:hover{
+        background-color: white;
+        color: $dark-yellow-text;
+        border: 2px solid $dark-yellow-text;
+        text-decoration: none;
+        }
+    .button-small:hover:enabled{
     background-color: white;
     color: $dark-yellow-text;
     border: 2px solid $dark-yellow-text;
     text-decoration: none;
+    }
+    .button-small:disabled{
+        background-color: $light-grey;
+        border:0.1em solid rgb(194, 194, 194);
     }
     @media all and (max-width:30em){
     .button-small{
@@ -179,7 +188,7 @@ a.button:hover{
         font-weight: bold
     }
     .nav-link:hover{
-        color:$light-purp;
+        color:$yellow;
     }
 
 .footer {
@@ -335,6 +344,7 @@ a.button:hover{
     overflow: scroll;
     border-top: 2px solid $medium-purp;
     border-bottom: 2px solid $medium-purp;
+    background-color: white;
 }
 
 .bar-card {
@@ -377,8 +387,10 @@ a.button:hover{
 //User Dashboard Page & BarCrawl Edit
 
 .purple-background{
-    background-color: $medium-purp;
-    padding: 150px 50px;
+    background-color: $light-purp;
+    padding-top: 140px;
+    padding-bottom: 20px;
+    min-height: 100vh;
 }
 
 .flex-container{
@@ -390,4 +402,15 @@ a.button:hover{
 }
 .centered{
     justify-content: center
+}
+
+.padding-sides{
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.edit-title-form-field{
+    padding-top: 10px;
+    margin-right: 10px;
+    min-width: 300px
 }
