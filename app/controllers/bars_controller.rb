@@ -1,6 +1,11 @@
 class BarsController < ApplicationController
 
 
+def index
+    bars = Bar.all 
+    render json: bars
+end
+
     
 def create
     crawl = Crawl.find(crawl_params[:id])
