@@ -41,6 +41,12 @@ const NewCrawlModal = (props) => {
 
   const handleChange = e => setTitle(e.target.value)
 
+  const handleSubmit = e => {
+    e.preventDefault()
+    createNewCrawl(title)
+  }
+
+
   return (
     <div>
       <Button className="button-dark" onClick={toggle}> Add to Crawl{buttonLabel}</Button>
@@ -52,7 +58,7 @@ const NewCrawlModal = (props) => {
       size="lg"
       >
             <ModalHeader toggle={toggle}>
-                <h2>Save {props.name} to Your BarCrawlz! </h2>
+                <h2>Save {props.name} to Your BarCrawlz!</h2>
             </ModalHeader>
         <ModalBody>
         <h4><b>Create a New Crawl & Add {props.name}</b></h4>
@@ -68,7 +74,9 @@ const NewCrawlModal = (props) => {
                     </FormGroup>
                 <button 
                 className= "button-small" 
-                onClick={toggle} >
+                onClick={() => {toggle();
+                               handleSubmit();
+                               }}>
                     Create & Add
                 </button>
                 </Form>

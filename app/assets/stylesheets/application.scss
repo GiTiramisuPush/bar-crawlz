@@ -39,6 +39,37 @@ h1.dark-background-text, h2.dark-background-text, p.dark-background-text{
     transition: .2s ease-in-out;
 }
 
+a.light{
+    color: $light-text;
+    font-size: 35px;
+    text-decoration: none;
+
+}
+a.light:hover{
+    color: $light-purp;
+}
+.arrow-right {
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid white;
+  }
+  .arrow-right:hover{
+    border-left: 30px solid $light-purp;
+  }
+
+.arrow-left {
+    width: 0; 
+    height: 0; 
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent; 
+    border-right:30px solid white; 
+  }
+  .arrow-left:hover{
+    border-right:30px solid $light-purp; 
+  }
+
 //buttons
 .button-dark{
     display:inline-block;
@@ -219,7 +250,9 @@ a.button:hover{
     background-color: $medium-purp;
     padding: 20px 50px;
 }
-
+.top-crawls-card{
+    margin-top: 10px;
+}
 .top-crawls-card:hover{
     transform: rotate(1deg);
     transition: .2s ease-in-out;
@@ -346,4 +379,15 @@ a.button:hover{
 .purple-background{
     background-color: $medium-purp;
     padding: 150px 50px;
+}
+
+.flex-container{
+    display: flex
+}
+
+.space-between{
+    justify-content: space-between
+}
+.centered{
+    justify-content: center
 }

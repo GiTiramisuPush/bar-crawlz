@@ -10,7 +10,7 @@ class UserDashboardP extends Component {
             User Dashboard
             </h1>
 
-        <br/><br/>
+        <br/>
 
         <h2 className= "dark-background-text">
           <center>
@@ -20,7 +20,7 @@ class UserDashboardP extends Component {
 
         <div className="scroll-container">
             <Container>
-                <Row>
+                <Row className= "flex-container centered">
             { this.props.crawls && this.props.crawls.map((crawl, index) => {
           return (
             <Col key={index} className="spacing" lg="4" sm="6" xs="12">
@@ -35,7 +35,8 @@ class UserDashboardP extends Component {
                     src= { BarCrawlIcon }
                     alt="your crawl" />
                     <div className="modal-form">
-                    <Button className="button-small" >Edit</Button>
+                    <Button className="button-small"
+                    href="/editbarcrawl/" >Edit</Button>
                     <Button className="button-small" >Delete</Button>
                     </div>
                     </CardBody>
@@ -48,7 +49,25 @@ class UserDashboardP extends Component {
             </div>
 
             <br/><br/>
-
+          <div className= "flex-container space-between">
+          <div className= "flex-container">
+          <div class="arrow-left" ></div>
+          <div class="spacer"></div>
+          <a 
+            className= "light" 
+            href="/"> 
+            Back to Search
+          </a>
+          </div>
+          <div className= "flex-container">
+          <a 
+            className= "light" 
+            href={ this.props.sign_out_route }>Sign Out
+          </a>
+          <div class="spacer"></div>
+          <div class="arrow-right" href={ this.props.sign_out_route }></div>
+          </div>
+          </div>
       </div>
     );
   }
