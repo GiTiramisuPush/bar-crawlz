@@ -67,8 +67,11 @@ class BarShow extends Component {
             {/* if the user is logged in, conditionally render the modal to add the bar to a crawl */}
                 {
                   this.props.logged_in &&
+
                   < NewCrawlModal
-                        crawls = { this.props.crawls }
+                        crawls = { this.props.crawls.filter(crawl => crawl.user_id === userid) }
+                        user_id= { this.props.current_user.id }
+
                         name = { bar.name }
                         bar={ bar }
                         createNewCrawl={ this.props.createNewCrawl }
