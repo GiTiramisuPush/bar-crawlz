@@ -29,10 +29,28 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bars: mockBars,
+      bars: [],
       crawls: mockCrawls
     }
   } 
+
+  componentDidMount(){
+    this.indexBars()
+  }
+
+  //indexBars fetch call
+  indexBars = () => {
+    fetch(`"https://api.yelp.com/v3/businesses/search?location"`)
+    .then(response => {
+      return response.json()
+    })
+    .then(payload => {
+      this.setState({bars: payload})
+    })
+    .catch(errors => {
+      console.log("index errors", errors)
+    })
+  }
 
 //methods used in newcrawlmodal
   createNewCrawl = (newcrawl) => {
