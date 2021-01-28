@@ -45,6 +45,7 @@ a.light{
 
 }
 a.light:hover{
+    transition: .2s ease-in-out;
     color: $medium-purp;
 }
 .arrow-right {
@@ -56,6 +57,7 @@ a.light:hover{
   }
   .arrow-right:hover{
     border-left: 30px solid $medium-purp;
+    transition: .2s ease-in-out
   }
 
 .arrow-left {
@@ -67,6 +69,7 @@ a.light:hover{
   }
   .arrow-left:hover{
     border-right:30px solid $medium-purp; 
+    transition: .2s ease-in-out
   }
 
 //buttons
@@ -90,6 +93,7 @@ a.light:hover{
     background-color:#FFffff;
     border: 2px solid $medium-purp;
     text-decoration: none;
+    transition: .2s ease-in-out
     }
     @media all and (max-width:30em){
     .button-dark{
@@ -118,6 +122,7 @@ a.light:hover{
     color: $dark-yellow-text;
     border: 2px solid $dark-yellow-text;
     text-decoration: none;
+    transition: .2s ease-in-out
     }
     @media all and (max-width:30em){
     .button{
@@ -131,11 +136,12 @@ a.button{
 }
 a.button:hover{
     color:$dark-yellow-text;
+    transition: .2s ease-in-out
 }
 
 .button-small{
     display:inline-block;
-    padding: 8px 10px;
+    padding: 6px 8px;
     margin:0 0.3em 0.3em 0;
     border-radius:5px;
     box-sizing: border-box;
@@ -154,15 +160,18 @@ a.button:hover{
         color: $dark-yellow-text;
         border: 2px solid $dark-yellow-text;
         text-decoration: none;
+        transition: .2s ease-in-out
         }
     .button-small:hover:enabled{
     background-color: white;
     color: $dark-yellow-text;
     border: 2px solid $dark-yellow-text;
     text-decoration: none;
+    transition: .2s ease-in-out
     }
     .button-small:disabled{
         background-color: $light-grey;
+        color: grey;
         border:0.1em solid rgb(194, 194, 194);
     }
     @media all and (max-width:30em){
@@ -188,7 +197,8 @@ a.button:hover{
         font-weight: bold
     }
     .nav-link:hover{
-        color:$yellow;
+        color:$light-purp;
+        transition: .2s ease-in-out
     }
 
 .footer {
@@ -379,7 +389,8 @@ a.button:hover{
 }
 
 .modal-form-field{
-    padding-top: 10px;
+    padding-top: 6px;
+    height: 30px;
     margin-right: 10px;
     min-width: 250px
 }
@@ -410,7 +421,36 @@ a.button:hover{
 }
 
 .edit-title-form-field{
-    padding-top: 10px;
+    padding-top: 6px;
+    height: 30px;
     margin-right: 10px;
     min-width: 300px
+}
+
+
+// About Us Page
+
+.circular-frame {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .circular-frame img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-us-paragraph{
+      max-width: 800px;
+  }
+
+  .extra-padding{
+      padding-bottom: 20px;
+  }
+  .padding-top-and-bottom{
+    padding-top: 50px;
+    padding-bottom: 20px;
 }

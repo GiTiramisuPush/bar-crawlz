@@ -25,7 +25,7 @@ class BarShow extends Component {
       <div className= "page-container">
       <NavLink 
         to={`/barindex`}
-        className="white-background-container"><h4>Back to Search</h4></NavLink>
+        ><h4 className="padding-sides">Back to Search</h4></NavLink>
       <center>
       <div>
       <Row className= "bar-details-card">
