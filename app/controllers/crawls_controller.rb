@@ -3,11 +3,11 @@ class CrawlsController < ApplicationController
         crawls = Crawl.all 
         render json: crawls
     end
-
-    # def show 
-    #     crawl = Crawl.find(params[:id])
-    #     render json: crawl
-    # end
+        #A single crawl will include all bars
+    def show 
+        crawl = Crawl.find(params[:id])
+        render json: crawl, include: :bars
+    end
 
     def create
         crawl = Crawl.create(crawl_params)
