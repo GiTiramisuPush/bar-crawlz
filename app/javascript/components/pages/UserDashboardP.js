@@ -3,20 +3,30 @@ import { Container, Row, Col, Card, CardHeader, CardBody, CardImg, Button, NavLi
 import BarCrawlIcon from '../../assets/barcrawlicon.png'
 
 class UserDashboardP extends Component {
+
+  handleSubmit = (e, crawlID) => {
+    // keeps react from refreshing the page unnecessarily
+    e.preventDefault()
+    // a function call being passed from App.js
+    this.props.deleteCrawl(crawlID)
+  }
+
+
+
+
   render () {
     return (
       <div className='purple-background'>
+        <div className='padding-sides'>
         <h1 className= "dark-background-text">
             User Dashboard
             </h1>
-
-        <br/>
-
         <h2 className= "dark-background-text">
           <center>
             Saved Crawls
             </center>
         </h2>
+        </div>
 
         <div className="scroll-container">
             <Container>
@@ -35,9 +45,19 @@ class UserDashboardP extends Component {
                     src= { BarCrawlIcon }
                     alt="your crawl" />
                     <div className="modal-form">
-                    <Button className="button-small"
-                    href="/editbarcrawl/" >Edit</Button>
-                    <Button className="button-small" >Delete</Button>
+                    
+                    <Button
+                      className="button-small"
+                      href={`/editbarcrawl/${crawl.id}`} >
+                        Edit
+                    </Button>
+
+                    <Button
+                      onClick= { (e) => this.handleSubmit(e, crawl.id) }
+                      className="button-small"
+                      href="/userdashboard" >
+                      Delete
+                    </Button>
                     </div>
                     </CardBody>
             </Card>
@@ -48,11 +68,11 @@ class UserDashboardP extends Component {
             </Container>
             </div>
 
-            <br/><br/>
-          <div className= "flex-container space-between">
+            <br/>
+          <div className= "flex-container space-between padding-sides">
           <div className= "flex-container">
-          <div class="arrow-left" ></div>
-          <div class="spacer"></div>
+          <div className="arrow-left" ></div>
+          <div className="spacer"></div>
           <a 
             className= "light" 
             href="/"> 
@@ -64,8 +84,8 @@ class UserDashboardP extends Component {
             className= "light" 
             href={ this.props.sign_out_route }>Sign Out
           </a>
-          <div class="spacer"></div>
-          <div class="arrow-right" href={ this.props.sign_out_route }></div>
+          <div className="spacer"></div>
+          <div className="arrow-right" href={ this.props.sign_out_route }></div>
           </div>
           </div>
       </div>

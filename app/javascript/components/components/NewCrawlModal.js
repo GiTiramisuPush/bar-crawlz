@@ -20,7 +20,7 @@ import { Button,
 import BarCrawlIcon from '../../assets/barcrawlicon.png'
 
     //mockData
-import mockCrawls from '../pages/mockCrawls.js'
+// import mockCrawls from '../pages/mockCrawls.js'
 
 const NewCrawlModal = (props) => {
 
@@ -28,7 +28,11 @@ const NewCrawlModal = (props) => {
 
   const {
     buttonLabel,
-    className
+    className,
+    bar,
+    crawls,
+    addBartoCrawl,
+    createNewCrawl
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -37,13 +41,21 @@ const NewCrawlModal = (props) => {
 
   const [title, setTitle]= useState("")
 
-  const [crawls,setCrawls]= useState(mockCrawls)
+  // const [crawls,setCrawls]= useState(mockCrawls)
 
   const handleChange = e => setTitle(e.target.value)
 
-  const handleSubmit = e => {
+  //this method will have to return a bar ID
+  const createCrawlAndAddBar = e => {
     e.preventDefault()
-    createNewCrawl(title)
+    let crawlID = createNewCrawl(title)
+    addBartoCrawl(bar, crawlID)
+    toggle()
+  }
+
+  const addToExistingCrawl = (crawlID)=> {
+    addBartoCrawl(bar, crawlID)
+    toggle()
   }
 
 
@@ -74,9 +86,8 @@ const NewCrawlModal = (props) => {
                     </FormGroup>
                 <button 
                 className= "button-small" 
-                onClick={() => {toggle();
-                               handleSubmit();
-                               }}>
+                onClick={ createCrawlAndAddBar }
+                disabled= { title.length < 1 }>
                     Create & Add
                 </button>
                 </Form>
@@ -99,7 +110,10 @@ const NewCrawlModal = (props) => {
                     src= { BarCrawlIcon }
                     alt="your crawl" />
                     <center>
-                    <Button className="button-small" onClick={toggle}>Add Now</Button>
+                    <Button 
+                      className="button-small"
+                      onClick={ () => addToExistingCrawl(crawl.id) }>
+                        Add Now</Button>
                     </center>
                     </CardBody>
             </Card>

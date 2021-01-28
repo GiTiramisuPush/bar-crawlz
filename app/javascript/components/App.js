@@ -34,11 +34,29 @@ class App extends React.Component {
     }
   } 
 
+//methods used in newcrawlmodal
   createNewCrawl = (newcrawl) => {
     console.log(newcrawl)
   }
 
+  addBartoCrawl = (bar, crawlID) => {
+    console.log(bar, crawlID)
+  }
 
+//methods used in user dashboard
+  deleteCrawl = (crawl) =>{
+    console.log("DELETED CRAWL", crawl)
+  }
+
+  updateCrawlTitle = (crawl, id) => {
+    console.log("crawl:", crawl)
+    console.log("id:", id)
+  }
+
+//methods used in barcrawl edit
+  deleteBarFromCrawl = (crawl) =>{
+    console.log(crawl)
+  }
 
   render () {
 
@@ -85,12 +103,15 @@ class App extends React.Component {
           render={ (props) =>{
             let id = props.match.params.id
             let bar = this.state.bars.businesses.find(bar => bar.id == id)
-            console.log("bar", bar)
-            console.log("id", id)
+            let userid = this.props.current_user.id
+            let crawls = this.state.crawls.filter(crawl => crawl.user_id === userid)
+              console.log("my crawls", crawls)
             return (
               <BarShow 
                 bar={ bar }
+                crawls= { crawls }
                 createNewCrawl={ this.createNewCrawl }
+                addBartoCrawl={ this.addBartoCrawl }
                 logged_in={ this.props.logged_in }
                 sign_in_route = { this.props.sign_in_route }
                 sign_out_route = { this.props.sign_out_route }
@@ -101,8 +122,28 @@ class App extends React.Component {
         />
         
 
-    {/* -----Bar Crawl Edit Route----- */}
-    <Route path="/editbarcrawl" component={ BarCrawlEditP } />
+    {/* -----Bar Crawl Edit Route (protected)----- */}
+{ this.props.logged_in &&
+    <Route 
+      path="/editbarcrawl/:id"
+      render={ (props) => {
+          let id = props.match.params.id
+          let crawl = this.state.crawls.find(crawl => crawl.id === parseInt(id))
+              return (
+                <BarCrawlEditP
+                  crawl= { crawl }
+                  bars = { this.props.bars }
+                  current_user={ this.props.current_user }
+                  sign_out_route = { this.props.sign_out_route }
+                  updateCrawlTitle={ this.updateCrawlTitle }
+                  deleteBarFromCrawl={ this.deleteBarFromCrawl }
+                />
+              )
+            }}
+          />
+  }
+
+
 
     {/* -----User Dashboard Route----- */}
     { this.props.logged_in &&
@@ -110,12 +151,14 @@ class App extends React.Component {
        path="/userdashboard"
        render={ (props) =>{
         let id = this.props.current_user.id
+        let crawl = this.state.crawls.find(crawl => crawl.id === parseInt(id))
         let crawls = this.state.crawls.filter(crawl => crawl.user_id === id)
-        console.log("my crawls", crawls)
         return(
           <UserDashboardP 
             crawls={ crawls }
-            sign_out_route = { this.props.sign_out_route } />
+            crawl={ crawl }
+            sign_out_route = { this.props.sign_out_route } 
+            deleteCrawl={ this.deleteCrawl }/>
         )
       }}
     />
