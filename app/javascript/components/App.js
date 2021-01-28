@@ -106,11 +106,12 @@ class App extends React.Component {
             // let userid = this.props.current_user.id
             // let crawls = this.state.crawls.filter(crawl => crawl.user_id === userid)
             //   console.log("my crawls", crawls)
-            let crawls = this.state.crawls
+            //attempt 
+            // let crawls = this.state.crawls
             return (
               <BarShow 
                 bar={ bar }
-                crawls= { crawls }
+                crawls= { this.state.crawls }
                 createNewCrawl={ this.createNewCrawl }
                 addBartoCrawl={ this.addBartoCrawl }
                 logged_in={ this.props.logged_in }
@@ -118,7 +119,6 @@ class App extends React.Component {
                 sign_out_route = { this.props.sign_out_route }
                 sign_up_route = { this.props.sign_up_route }
                 new_user_route={ this.props.new_user_route }
-
                 current_user={ this.props.current_user }  
                 />
             )

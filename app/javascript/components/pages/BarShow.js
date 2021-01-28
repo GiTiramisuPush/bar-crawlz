@@ -69,9 +69,8 @@ class BarShow extends Component {
                   this.props.logged_in &&
 
                   < NewCrawlModal
-                        crawls = { this.props.crawls.filter(crawl => crawl.user_id === userid) }
-                        user_id= { this.props.current_user.id }
-
+                        current_user={ this.props.current_user }
+                        crawls = { this.props.crawls.filter(crawl => crawl.user_id === this.props.current_user.id) }
                         name = { bar.name }
                         bar={ bar }
                         createNewCrawl={ this.props.createNewCrawl }
