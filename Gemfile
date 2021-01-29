@@ -56,3 +56,5 @@ gem "devise", "~> 4.7"
 gem "bootstrap", "~> 4.5"
 
 gem 'dotenv-rails'
+## CORS 1/28/2021
+gem 'rack-cors', :require => 'rack/cors'

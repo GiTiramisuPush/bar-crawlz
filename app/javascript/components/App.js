@@ -1,14 +1,13 @@
 import React from "react"
 
 //mock Data
-import mockBars from './pages/yelpBarData.js'
+// import mockBars from './pages/yelpBarData.js'
 import mockCrawls from './pages/mockCrawls.js'
 
 
 //Components
 import Header from './components/Header'
 import Footer from './components/Footer'
-import BarIndex from './components/BarIndex'
 
 //Pages
 import AboutUs from './pages/AboutUs'
@@ -29,26 +28,28 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bars: [],
-      crawls: mockCrawls
+      bars: null,
+      crawls: mockCrawls,
+      location: "",
+      term: ""
     }
   } 
 
-  componentDidMount(){
-    this.indexBars()
+// method 
+  getUserYelpInfo = (userlocation, userterm) => {
+    this.setState({ location: userlocation, term: userterm })
+    this.indexYelpBars()
   }
 
-  //indexBars fetch call
-  indexBars = () => {
-    fetch(`"https://api.yelp.com/v3/businesses/search?location"`)
-    .then(response => {
-      return response.json()
-    })
+  indexYelpBars = () => {
+    let { location, term } = this.state
+    console.log(location)
+    console.log(term)
+    fetch(`/yelp?location=${location}&term=${term}`)
+    .then(response => response.json())
     .then(payload => {
+      console.log(payload)
       this.setState({bars: payload})
-    })
-    .catch(errors => {
-      console.log("index errors", errors)
     })
   }
 
@@ -62,7 +63,7 @@ class App extends React.Component {
   }
 
 //methods used in user dashboard
-  deleteCrawl = (crawl) =>{
+  deleteCrawl = (crawl) => {
     console.log("DELETED CRAWL", crawl)
   }
 
@@ -72,7 +73,7 @@ class App extends React.Component {
   }
 
 //methods used in barcrawl edit
-  deleteBarFromCrawl = (crawl) =>{
+  deleteBarFromCrawl = (crawl) => {
     console.log(crawl)
   }
 
@@ -86,26 +87,27 @@ class App extends React.Component {
 
     return (
 
-<Router>
+    <Router>
 
       <Header 
-          logged_in={ this.props.logged_in }
-          sign_in_route = { this.props.sign_in_route }
-          sign_out_route = { this.props.sign_out_route }
-          sign_up_route = { this.props.sign_up_route }
-          new_user_route={ this.props.new_user_route }
-        />
+        logged_in={ this.props.logged_in }
+        sign_in_route = { this.props.sign_in_route }
+        sign_out_route = { this.props.sign_out_route }
+        sign_up_route = { this.props.sign_up_route }
+        new_user_route={ this.props.new_user_route }
+      />
 
   <Switch>
     {/* -----Home Route----- */}
       <Route exact path="/" 
             render={ (props) => 
             <Home      
-              bars = { this.state.bars}     
+              bars = { this.state.bars }     
               sign_in_route = { this.props.sign_in_route }
               sign_out_route = { this.props.sign_out_route }
               sign_up_route = { this.props.sign_up_route }
-              new_user_route={ this.props.new_user_route } 
+              new_user_route={ this.props.new_user_route }
+              getUserYelpInfo={ this.getUserYelpInfo } 
             /> 
         } 
       />
@@ -121,9 +123,6 @@ class App extends React.Component {
           render={ (props) =>{
             let id = props.match.params.id
             let bar = this.state.bars.businesses.find(bar => bar.id == id)
-            // let userid = this.props.current_user.id
-            // let crawls = this.state.crawls.filter(crawl => crawl.user_id === userid)
-            //   console.log("my crawls", crawls)
             let crawls = this.state.crawls
             return (
               <BarShow 
@@ -136,7 +135,6 @@ class App extends React.Component {
                 sign_out_route = { this.props.sign_out_route }
                 sign_up_route = { this.props.sign_up_route }
                 new_user_route={ this.props.new_user_route }
-
                 current_user={ this.props.current_user }  
                 />
             )
@@ -180,7 +178,8 @@ class App extends React.Component {
             crawls={ crawls }
             crawl={ crawl }
             sign_out_route = { this.props.sign_out_route } 
-            deleteCrawl={ this.deleteCrawl }/>
+            deleteCrawl={ this.deleteCrawl }
+          />
         )
       }}
     />

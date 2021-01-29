@@ -34,7 +34,7 @@ class Home extends Component {
     console.log("location", form.location)
     console.log("term", form.term)
     if(form.location.length > 0){
-      alert("fetch call happening")
+      this.props.getUserYelpInfo(form.location, form.term)
       this.setState({ viewToggle: true })
     } else{
       return alert("You must enter a location to search!")
