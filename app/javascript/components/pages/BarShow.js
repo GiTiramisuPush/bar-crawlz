@@ -39,8 +39,7 @@ class BarShow extends Component {
         </Col>
         <Col>
       <div className="bar-info">
-        <h2>{ bar.name } helloooo</h2>
-        <h4>{ bar.location.display_address[0] }</h4>
+        <h2>{ bar.name }</h2>
         <p>{ bar.location.display_address.map((displayaddressline, index) => {
               return (<h4 key= { index }> { displayaddressline } </h4>)
             })
