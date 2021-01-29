@@ -1,14 +1,13 @@
 import React from "react"
 
 //mock Data
-import mockBars from './pages/yelpBarData.js'
+// import mockBars from './pages/yelpBarData.js'
 import mockCrawls from './pages/mockCrawls.js'
 
 
 //Components
 import Header from './components/Header'
 import Footer from './components/Footer'
-import BarIndex from './components/BarIndex'
 
 //Pages
 import AboutUs from './pages/AboutUs'
@@ -29,10 +28,36 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bars: mockBars,
-      crawls: mockCrawls
+      bars: null,
+      crawls: mockCrawls,
+      // location: "",
+      // term: ""
     }
   } 
+
+// yelp API bar index methods
+
+  //this method takes the user's inputted information from the Search Bar on the Home Page. 
+  //It then runs the indexYelpBars method (which is a fetch call to the API) with this user's search info as its arguments.
+  getUserYelpInfo = (userlocation, userterm) => {
+    console.log(userlocation, "userlocation")
+    console.log(userterm, "userterm")
+    // this.setState({ location: userlocation, term: userterm })
+    this.indexYelpBars(userlocation, userterm)
+  }
+
+  //fetch call to the Yelp API to return bars in a certain location with a specific term.
+  indexYelpBars = (userlocation, userterm) => {
+    // let { location, term } = this.state
+    console.log(userlocation)
+    console.log(userterm)
+    fetch(`/yelp?location=${userlocation}&term=${userterm}`)
+    .then(response => response.json())
+    .then(payload => {
+      console.log(payload)
+      this.setState({bars: payload})
+    })
+  }
 
 //methods used in newcrawlmodal
   createNewCrawl = (newcrawl) => {
@@ -44,7 +69,7 @@ class App extends React.Component {
   }
 
 //methods used in user dashboard
-  deleteCrawl = (crawl) =>{
+  deleteCrawl = (crawl) => {
     console.log("DELETED CRAWL", crawl)
   }
 
@@ -54,40 +79,40 @@ class App extends React.Component {
   }
 
 //methods used in barcrawl edit
-  deleteBarFromCrawl = (crawl) =>{
+  deleteBarFromCrawl = (crawl) => {
     console.log(crawl)
   }
 
   render () {
 
 //info about whats happening with logged in users etc
-    console.log("mockBars test",this.state.bars)
     console.log("logged in", this.props.logged_in)
     console.log("current user", this.props.current_user)
     console.log("this.state.bars", this.state.bars)
 
     return (
 
-<Router>
+    <Router>
 
       <Header 
-          logged_in={ this.props.logged_in }
-          sign_in_route = { this.props.sign_in_route }
-          sign_out_route = { this.props.sign_out_route }
-          sign_up_route = { this.props.sign_up_route }
-          new_user_route={ this.props.new_user_route }
-        />
+        logged_in={ this.props.logged_in }
+        sign_in_route = { this.props.sign_in_route }
+        sign_out_route = { this.props.sign_out_route }
+        sign_up_route = { this.props.sign_up_route }
+        new_user_route={ this.props.new_user_route }
+      />
 
   <Switch>
     {/* -----Home Route----- */}
       <Route exact path="/" 
             render={ (props) => 
             <Home      
-              bars = { this.state.bars}     
+              bars = { this.state.bars }     
               sign_in_route = { this.props.sign_in_route }
               sign_out_route = { this.props.sign_out_route }
               sign_up_route = { this.props.sign_up_route }
-              new_user_route={ this.props.new_user_route } 
+              new_user_route={ this.props.new_user_route }
+              getUserYelpInfo={ this.getUserYelpInfo } 
             /> 
         } 
       />
@@ -103,11 +128,7 @@ class App extends React.Component {
           render={ (props) =>{
             let id = props.match.params.id
             let bar = this.state.bars.businesses.find(bar => bar.id == id)
-            // let userid = this.props.current_user.id
-            // let crawls = this.state.crawls.filter(crawl => crawl.user_id === userid)
-            //   console.log("my crawls", crawls)
-            //attempt 
-            // let crawls = this.state.crawls
+            let crawls = this.state.crawls
             return (
               <BarShow 
                 bar={ bar }
@@ -162,7 +183,8 @@ class App extends React.Component {
             crawls={ crawls }
             crawl={ crawl }
             sign_out_route = { this.props.sign_out_route } 
-            deleteCrawl={ this.deleteCrawl }/>
+            deleteCrawl={ this.deleteCrawl }
+          />
         )
       }}
     />
