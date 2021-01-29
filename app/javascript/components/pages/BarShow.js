@@ -17,10 +17,12 @@ class BarShow extends Component {
   // closeModal = () => this.setState({ isOpen: false });
 
 
+
+
   render () {
 
-
     const { bar } = this.props
+    console.log("SINGLE BAR", bar)
     return (
       <div className= "page-container">
       <NavLink 
@@ -38,14 +40,18 @@ class BarShow extends Component {
         <Col>
       <div className="bar-info">
         <h2>{ bar.name }</h2>
-        <h4>{ bar.display_address }</h4>
+        <p>{ bar.location.display_address.map((displayaddressline, index) => {
+              return (<h4 key= { index }> { displayaddressline } </h4>)
+            })
+          }</p>
         <p><b>{ bar.display_phone }</b></p>
         <p>
           <b>Rating: </b>{ bar.rating }
         </p>
       <div className= "bar-categories-container">
           { bar.categories.map((category, index) => {
-          return (<span className = "outlined-text" key= { index } > { category.title }</span>) })
+          return (<span className = "outlined-text" key= { index } > { category.title }</span>) 
+            })
           }
       </div>
           <Row>

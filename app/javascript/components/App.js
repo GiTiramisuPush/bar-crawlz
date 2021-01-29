@@ -29,9 +29,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       bars: null,
-      crawls: mockCrawls,
-      // location: "",
-      // term: ""
+      crawls: mockCrawls
     }
   } 
 
@@ -42,7 +40,6 @@ class App extends React.Component {
   getUserYelpInfo = (userlocation, userterm) => {
     console.log(userlocation, "userlocation")
     console.log(userterm, "userterm")
-    // this.setState({ location: userlocation, term: userterm })
     this.indexYelpBars(userlocation, userterm)
   }
 
@@ -59,14 +56,44 @@ class App extends React.Component {
     })
   }
 
+
 //methods used in newcrawlmodal
-  createNewCrawl = (newcrawl) => {
-    console.log(newcrawl)
+
+  indexCrawls = () => {
+    fetch("/crawls")
+  }
+
+  createNewCrawl = (title) => {
+    return fetch(`/crawls?title=${title}&user_id=${this.props.current_user.id}`)
+    .then(response => response.json())
+    .then(payload => { 
+      console.log("payload", payload)
+      //this line will return the crawl ID of the crawl
+      return payload.id 
+      //might be payload.crawl.id- depends what the console log below looks like
+    })
   }
 
   addBartoCrawl = (bar, crawlID) => {
-    console.log(bar, crawlID)
+    return fetch(`/crawls/${crawlID}`, {
+      body: { bar: JSON.stringify(bar)},
+      headers: {
+      "Content-Type": "application/json"
+    },
+    // HTTP verb so the correct endpoint is invoked on the server
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Your submission was not accepted. BYE")
+      }
+      return response.JSON()
+    })
+    .catch(errors => {
+      console.log("Add Bar to Crawl Errors:", errors)
+    })
   }
+
 
 //methods used in user dashboard
   deleteCrawl = (crawl) => {
