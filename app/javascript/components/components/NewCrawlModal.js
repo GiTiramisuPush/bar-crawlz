@@ -32,7 +32,8 @@ const NewCrawlModal = (props) => {
     bar,
     crawls,
     addBartoCrawl,
-    createNewCrawl
+    createNewCrawl,
+    current_user
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -48,9 +49,11 @@ const NewCrawlModal = (props) => {
   //this method will have to return a bar ID
   const createCrawlAndAddBar = e => {
     e.preventDefault()
-    let crawlID = createNewCrawl(title)
-    addBartoCrawl(bar, crawlID)
-    toggle()
+    createNewCrawl(title, current_user.id)
+    .then((crawlID) => {
+      addBartoCrawl(bar, crawlID)
+      toggle()
+    })
   }
 
   const addToExistingCrawl = (crawlID)=> {

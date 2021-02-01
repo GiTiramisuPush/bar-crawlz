@@ -80,6 +80,10 @@ a.light:hover{
     transition: .2s ease-in-out
   }
 
+.dark-link{
+    color: $dark-purp
+}
+
 //buttons
 .button-dark{
     display:inline-block;
@@ -380,6 +384,10 @@ a.button:hover{
     max-height: 150px;
     border-radius: 10px;
     overflow: hidden;
+  }
+
+.padding-top{
+    padding-top: 20px
   }
 
 //modal
