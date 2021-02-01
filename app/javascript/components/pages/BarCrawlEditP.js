@@ -12,24 +12,29 @@ class BarCrawlEditP extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ""
+      form:{
+        title: "",
+        user_id: this.props.current_user.id
+      },
+      success: false
+      }
     }
-  } 
 
 
   handleChange = (e) => {
-    let { title } = this.state
+    let { form } = this.state
     // destructuring title out of state
-    title = e.target.value
+    form[e.target.name] = e.target.value
     // setting state to the updated form
-    this.setState({ title: title })
+    this.setState({ form: form })
   }
 
   handleSubmitUpdate = (e) => {
     // keeps react from refreshing the page unnecessarily
     e.preventDefault()
     // a function call being passed from App.js
-    this.props.updateCrawlTitle(this.state.title, this.props.crawl.id)
+    this.props.updateCrawlTitle(this.state.form, this.props.crawl[0].id)
+    this.setState({ success: true })
   }
 
   // handleSubmitDeleteBar = (e) => {
@@ -41,28 +46,28 @@ class BarCrawlEditP extends Component {
 
   render () {
 
-    console.log("EDIT PAGE'S CRAWL'", this.props.crawl)
-
     return (
       <div className='purple-background'>
       <h1 className= "dark-background-text padding-sides">
           Edit Your Saved Bar Crawl
           </h1>
-      <h2 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h2>
-      <Form className="modal-form padding-sides">
+      {this.props.crawl[0] &&
+        <h2 className= "dark-background-text padding-sides">"{this.props.crawl[0].title}"</h2>
+        }
+            <Form className="modal-form padding-sides">
                     <FormGroup className= "edit-title-form-field">
                         <Input
                         type="text"
                         name="title"
                         placeholder="Write Your New Crawl Title Here 😉"
-                        value= { this.state.title }
+                        value= { this.state.form.title }
                         onChange={ this.handleChange }
                         />
                     </FormGroup>
                 <button 
                 className= "button-small" 
                 onClick={ this.handleSubmitUpdate }
-                disabled= { this.state.title.length < 1 }>
+                disabled= { this.state.form.title.length < 1 }>
                     UPDATE TITLE
                 </button>
                 </Form>

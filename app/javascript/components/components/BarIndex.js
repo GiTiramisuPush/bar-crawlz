@@ -18,11 +18,11 @@ class BarIndex extends Component {
                 <Row>
               <Col>
               <div className= "bar-search-thumbnail">
-              <a href= {`/bar/${bar.id}`}>
+              <NavLink to= {`/bar/${bar.id}`}>
                 <img 
                   className= "bar-img"
                   alt = "check out this amazing bar" src = { bar.image_url } />
-                </a>
+                </NavLink>
                 </div>
                 </Col>
               <Col>

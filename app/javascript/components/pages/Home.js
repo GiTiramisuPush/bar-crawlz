@@ -31,8 +31,6 @@ class Home extends Component {
     let { form, viewToggle } = this.state
     e.preventDefault()
     console.log("viewtoggle", viewToggle)
-    console.log("location", form.location)
-    console.log("term", form.term)
     if(form.location.length > 0){
       this.props.getUserYelpInfo(form.location, form.term)
       this.setState({ viewToggle: true })
