@@ -57,16 +57,19 @@ class App extends React.Component {
   }
   
 
-
 //methods used in newcrawlmodal
 
+componentDidMount(){
+  this.indexCrawls()
+}
+
   indexCrawls = () => {
-    fetch("http://localhost:3000/crawls")
+    fetch("/crawls")
     .then(response => {
       return response.json()
     })
     .then(crawlsObject => {
-      // set the state with the data from the backend into the empty array
+      // set the state with the data from the backend into the empty arra
       this.setState({ crawls: crawlsObject })
     })
     .catch(errors => {
@@ -251,9 +254,10 @@ class App extends React.Component {
       path="/editbarcrawl/:id"
       render={ (props) => {
           let id = props.match.params.id
-          let crawl = this.state.crawls.find(crawl => crawl.id === parseInt(id))
+          let crawl = this.state.crawls.filter(crawl => crawl.id === parseInt(id))
               return (
                 <BarCrawlEditP
+                  crawls= { this.state.crawls }
                   crawl= { crawl }
                   bars = { this.props.bars }
                   current_user={ this.props.current_user }

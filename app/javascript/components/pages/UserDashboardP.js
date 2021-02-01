@@ -137,7 +137,7 @@ class UserDashboardP extends Component {
           <div className="arrow-right" href={ this.props.sign_out_route }></div>
           </div>
           </div>
-          { this.state.success && <Redirect to="/userdashboard" />}
+          {/* { this.state.success && <Redirect to="/userdashboard" />} */}
       </div>
     );
   }
