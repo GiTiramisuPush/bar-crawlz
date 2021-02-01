@@ -31,7 +31,7 @@ end
 private
 
 def bar_params
-    params.require(:bar).permit(:yelp_id, :name, :image_url, :categories, :rating, :address1, :address2, :address3, :city, :zip_code, :country, :display_address, :phone, :display_phone)
+    params.require(:bar).permit(:yelp_id, :name, :image_url, :url, :categories, :rating, :address1, :address2, :address3, :city, :zip_code, :country, :display_address, :phone, :display_phone)
     end
 
 def crawl_params

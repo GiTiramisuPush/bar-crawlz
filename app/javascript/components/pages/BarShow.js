@@ -22,12 +22,11 @@ class BarShow extends Component {
   render () {
 
     const { bar } = this.props
-    console.log("SINGLE BAR", bar)
     return (
       <div className= "page-container">
       <NavLink 
-        to={`/barindex`}
-        ><h4 className="padding-sides">Back to Search</h4></NavLink>
+        to={`/`}
+        ><h4 className="padding-sides padding-top dark-link">Back to Search</h4></NavLink>
       <center>
       <div>
       <Row className= "bar-details-card">

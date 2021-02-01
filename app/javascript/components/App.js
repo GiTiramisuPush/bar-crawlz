@@ -2,7 +2,7 @@ import React from "react"
 
 //mock Data
 // import mockBars from './pages/yelpBarData.js'
-import mockCrawls from './pages/mockCrawls.js'
+// import mockCrawls from './pages/mockCrawls.js'
 
 
 //Components
@@ -29,7 +29,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       bars: null,
-      crawls: mockCrawls
+      crawls: []
     }
   } 
 
@@ -55,39 +55,85 @@ class App extends React.Component {
       this.setState({bars: payload})
     })
   }
-
+  
 
 //methods used in newcrawlmodal
 
+componentDidMount(){
+  this.indexCrawls()
+}
+
   indexCrawls = () => {
     fetch("/crawls")
+    .then(response => {
+      return response.json()
+    })
+    .then(crawlsObject => {
+      // set the state with the data from the backend into the empty arra
+      this.setState({ crawls: crawlsObject })
+    })
+    .catch(errors => {
+      console.log("index errors:", errors)
+    })
   }
 
-  createNewCrawl = (title) => {
-    return fetch(`/crawls?title=${title}&user_id=${this.props.current_user.id}`)
+  createNewCrawl = (title, userid) => {
+    const requestBody = {
+      title: title,
+      user_id: userid
+    }
+    return fetch('/crawls', {
+      body: JSON.stringify(requestBody),
+      headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+    })
     .then(response => response.json())
     .then(payload => { 
-      console.log("payload", payload)
       //this line will return the crawl ID of the crawl
-      return payload.id 
+      return payload.id
+      // payload.id 
       //might be payload.crawl.id- depends what the console log below looks like
     })
   }
 
+
   addBartoCrawl = (bar, crawlID) => {
-    return fetch(`/crawls/${crawlID}`, {
-      body: { bar: JSON.stringify(bar)},
+    const requestBody = {
+      bar: {
+        yelp_id: bar.id, 
+        name: bar.name, 
+        image_url: bar.image_url, 
+        url: bar.url,
+        categories: bar.categories.map(category => category.title).join(" / "),
+        rating: bar.rating, 
+        address1: bar.location.address1, 
+        city: bar.location.city, 
+        state: bar.location.state,
+        zip_code: bar.location.zip_code, 
+        country: bar.location.country, 
+        display_address: bar.location.display_address.join(", "),
+        phone: bar.phone, 
+        display_phone: bar.display_phone
+      },
+      crawl: {
+        id: crawlID
+      }
+    }
+    return fetch('/bars', {
+      body: JSON.stringify(requestBody),
       headers: {
       "Content-Type": "application/json"
     },
     // HTTP verb so the correct endpoint is invoked on the server
-      method: "PATCH"
+      method: "POST"
     })
     .then(response => {
       if(response.status === 422){
         alert("Your submission was not accepted. BYE")
       }
-      return response.JSON()
+      return response.json()
     })
     .catch(errors => {
       console.log("Add Bar to Crawl Errors:", errors)
@@ -95,15 +141,43 @@ class App extends React.Component {
   }
 
 
+
 //methods used in user dashboard
   deleteCrawl = (crawl) => {
     console.log("DELETED CRAWL", crawl)
   }
 
+
+
   updateCrawlTitle = (crawl, id) => {
     console.log("crawl:", crawl)
     console.log("id:", id)
   }
+
+
+  newCrawlOnly = (newcrawl) => {
+    fetch("/crawls", {
+      body: JSON.stringify(newcrawl),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("There is something wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(() => {
+      this.indexCrawls()
+    })
+    .catch(errors => {
+      console.log("create errors", errors)
+    })
+  }
+
+
 
 //methods used in barcrawl edit
   deleteBarFromCrawl = (crawl) => {
@@ -139,7 +213,7 @@ class App extends React.Component {
               sign_out_route = { this.props.sign_out_route }
               sign_up_route = { this.props.sign_up_route }
               new_user_route={ this.props.new_user_route }
-              getUserYelpInfo={ this.getUserYelpInfo } 
+              getUserYelpInfo={ this.getUserYelpInfo }
             /> 
         } 
       />
@@ -180,9 +254,10 @@ class App extends React.Component {
       path="/editbarcrawl/:id"
       render={ (props) => {
           let id = props.match.params.id
-          let crawl = this.state.crawls.find(crawl => crawl.id === parseInt(id))
+          let crawl = this.state.crawls.filter(crawl => crawl.id === parseInt(id))
               return (
                 <BarCrawlEditP
+                  crawls= { this.state.crawls }
                   crawl= { crawl }
                   bars = { this.props.bars }
                   current_user={ this.props.current_user }
@@ -211,6 +286,8 @@ class App extends React.Component {
             crawl={ crawl }
             sign_out_route = { this.props.sign_out_route } 
             deleteCrawl={ this.deleteCrawl }
+            newCrawlOnly={ this.newCrawlOnly }
+            current_user={ this.props.current_user } 
           />
         )
       }}

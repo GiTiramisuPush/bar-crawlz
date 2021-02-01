@@ -1,15 +1,48 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card, CardHeader, CardBody, CardImg, Button, NavLink } from 'reactstrap'
+import { Container, Row, Col, Card, CardHeader, CardBody, CardImg, Button, Form, FormGroup, Input, NavLink } from 'reactstrap'
 import BarCrawlIcon from '../../assets/barcrawlicon.png'
+import { Redirect } from 'react-router-dom'
 
 class UserDashboardP extends Component {
+  constructor(props){
+  super(props)
+  this.state = {
+    form:{
+      title: "",
+      user_id: this.props.current_user.id
+    },
+    success: false
+    }
+  }
 
+  //this handlesubmit deletes the crawl
   handleSubmit = (e, crawlID) => {
     // keeps react from refreshing the page unnecessarily
     e.preventDefault()
     // a function call being passed from App.js
     this.props.deleteCrawl(crawlID)
   }
+
+  //this changes text in the title as the user types
+  handleChange = (e) => {
+    let { form } = this.state
+    // destructuring title out of state
+    form[e.target.name] = e.target.value
+    // setting state to the updated form
+    this.setState({ form: form })
+  }
+
+  //this submits the form to create a new crawl
+  handleSubmitNewCrawl = () => {
+    // keeps react from refreshing the page unnecessarily
+    // e.preventDefault()
+    // a function call being passed from App.js
+        //do we need to pass the user ID here?????
+        console.log(this.state.form)
+    this.props.newCrawlOnly(this.state.form)
+    this.setState({ success: true })
+  }
+
 
 
 
@@ -67,7 +100,23 @@ class UserDashboardP extends Component {
             </Row>
             </Container>
             </div>
-
+          <Form className="modal-form padding-sides padding-top">
+                  <FormGroup className= "edit-title-form-field">
+                      <Input
+                      type="text"
+                      name="title"
+                      placeholder="Write Your Crawl Title Here 😉"
+                      value= { this.state.form.title }
+                      onChange={ this.handleChange }
+                      />
+                  </FormGroup>
+              <button 
+              className= "button-small" 
+              onClick={ this.handleSubmitNewCrawl }
+              disabled= { this.state.form.title.length < 1 }>
+                  CREATE A NEW CRAWL
+              </button>
+          </Form>
             <br/>
           <div className= "flex-container space-between padding-sides">
           <div className= "flex-container">
@@ -88,6 +137,7 @@ class UserDashboardP extends Component {
           <div className="arrow-right" href={ this.props.sign_out_route }></div>
           </div>
           </div>
+          {/* { this.state.success && <Redirect to="/userdashboard" />} */}
       </div>
     );
   }

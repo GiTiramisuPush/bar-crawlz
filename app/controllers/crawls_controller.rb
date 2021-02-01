@@ -18,6 +18,8 @@ class CrawlsController < ApplicationController
 
     def update
         crawl = Crawl.find(params[:id])
+
+
         crawl.update(crawl_params)
         if crawl.valid?
             render json: crawl

@@ -7,7 +7,7 @@ class BarIndex extends Component {
     return (
 <div className= "scroll-container">
 
-      <h3>Your results for "{this.props.location} {this.props.term}"</h3>
+      <h3>Your results for "{this.props.location} , {this.props.term}"</h3>
 
       <div>
         { this.props.bars && this.props.bars.businesses.map((bar, index) => {
