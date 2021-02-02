@@ -33,28 +33,27 @@ class BarCrawlEditP extends Component {
     // keeps react from refreshing the page unnecessarily
     e.preventDefault()
     // a function call being passed from App.js
-    this.props.updateCrawlTitle(this.state.form, this.props.crawl[0].id)
+    this.props.updateCrawlTitle(this.state.form, this.props.crawl.id)
     this.setState({ success: true })
   }
 
-  // handleSubmitDeleteBar = (e) => {
-  //   // keeps react from refreshing the page unnecessarily
-  //   e.preventDefault()
-  //   // a function call being passed from App.js
-  //   this.props.deleteBarFromCrawl(this.props.crawl)
-  // }
+  handleSubmitDeleteBar = (e, crawlid, barid) => {
+    // keeps react from refreshing the page unnecessarily
+    e.preventDefault()
+    // a function call being passed from App.js
+    this.props.deleteBarFromCrawl(crawlid, barid)
+  }
 
   render () {
-
-    console.log(this.props.crawl, "OUR CRAWL")
+      
 
     return (
       <div className='purple-background'>
-      <h1 className= "dark-background-text padding-sides">
+      <h1 className= "dark-background-text padding-sides centered-text-breakpoint">
           Edit Your Saved BarCrawl
           </h1>
       {this.props.crawl &&
-        <h2 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h2>
+        <h2 className= "dark-background-text padding-sides centered-text-breakpoint">"{this.props.crawl.title}"</h2>
         }
             <Form className="modal-form padding-sides">
                     <FormGroup className= "edit-title-form-field">
@@ -106,7 +105,7 @@ class BarCrawlEditP extends Component {
                 </NavLink> */}
 
                   <button 
-                    className="button">
+                    className="button" onClick={ (e) => this.handleSubmitDeleteBar(e, this.props.crawl.id, bar.id) }>
                     Delete from Crawl
                   </button>
 
@@ -117,6 +116,7 @@ class BarCrawlEditP extends Component {
         })}
         </div>
     </div>
+
 
           <br/>
         <div className= "flex-container space-between padding-sides">

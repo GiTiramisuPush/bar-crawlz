@@ -84,6 +84,13 @@ a.light:hover{
     color: $dark-purp
 }
 
+h1.XL-text{
+    font-size: 60px
+}
+h2.XL-text{
+    font-size: 50px
+}
+
 //buttons
 .button-dark{
     display:inline-block;
@@ -251,7 +258,7 @@ a.button:hover{
     height: 350px;
     overflow: hidden;
     border-radius: 20px;
-    margin-right: 10px;
+    margin-top: 20px;
 }
 
 .map-image{
@@ -263,6 +270,12 @@ a.button:hover{
 .hero-text{
     padding-top: 15px;
 }
+@include media-breakpoint-down(sm){
+    .centered-text-breakpoint{
+        text-align: center;
+        justify-content: center;
+    }
+}
 
 .search-form{
     display: flex;
@@ -271,7 +284,6 @@ a.button:hover{
 
 .search-field{
     padding-top: 10px;
-    margin-right: 10px;
 }
 
 //TopCrawls COMPONENT
@@ -311,10 +323,19 @@ a.button:hover{
     padding-right: 50px;
     padding-left: 50px;
 }
-
-.sign-up-buttons{
-    display: flex;
-    max-height: 65px;
+@include media-breakpoint-down(sm){
+    .sign-in-banner.flex-container{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+}
+//breakpoint for the buttons
+@include media-breakpoint-down(sm){
+    .vertically-centered.sign-in{
+        margin-top: 30px;
+        display: flex;
+        height: 50%;
+    }
 }
 
 .spacer{
@@ -483,4 +504,78 @@ a.button:hover{
     letter-spacing: 1px;
     font-weight: bold
 
+}
+
+//NotFound Page
+
+.vertically-centered-container{
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+@include media-breakpoint-down(sm){
+    .vertically-centered-container.flex-container{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+}
+
+
+.vertically-centered{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-align: center;
+       -ms-flex-align: center;
+          align-items: center;
+    -webkit-box-pack: center;
+       -ms-flex-pack: center;
+     justify-content: center;
+}
+@include media-breakpoint-down(sm){
+    .vertically-centered{
+        display: block;
+        height: 50%;
+        text-align: center;
+    }
+}
+
+.not-found-logo{
+    min-height: 20vh;
+    max-height: 50vh;
+    max-width: 50vw;
+}
+@include media-breakpoint-down(sm){
+    .not-found-logo{
+        margin-top: 110px;
+    }
+}
+
+
+//login pages
+
+@include media-breakpoint-down(sm){
+    .vertically-centered-container.flex-container.log-in{
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: 50vh;
+    }
+}
+.purple-background{
+    background-color: $dark-purp;
+}
+@include media-breakpoint-down(sm){
+    .vertically-centered.purple-background{
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 0;
+    }
+}
+
+.login-padding{
+    padding: 150px;
+}
+.login-margins{
+    margin: 150px;
 }

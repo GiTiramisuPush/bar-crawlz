@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, NavLink } from 'reactstrap'
 
-
+        // <Row className= "sign-in-banner  flex-column-reverse flex-md-row">
 
 class SignInBanner extends Component {
     render () {
@@ -12,9 +12,9 @@ const{
           } = this.props
 
       return (
-        <Row className= "sign-in-banner  flex-column-reverse flex-md-row">
+            <Row className= "sign-in-banner flex-container">
 
-            <Col className="sign-up-buttons">
+            <Col className="vertically-centered sign-in">
 
             <NavLink 
               className= "button" 
@@ -27,7 +27,9 @@ const{
               href = { sign_up_route }>Sign Up
               </NavLink>
             </Col>
-            <Col>
+
+
+            <Col className="vertically-centered">
                 <h2>Join the Fun & Save Your Favorite Routes </h2>
             </Col>
 
