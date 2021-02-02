@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardBody, CardHeader, CardDeck, Col} from 'reactstrap'
+import { Card, CardImg, CardHeader, CardDeck, Col} from 'reactstrap'
+import { NavLink } from 'react-router-dom'
+import SanDiego from '../../assets/SD.png'
+import Tijuana from '../../assets/TJ.png'
+import Vegas from '../../assets/Vegas.png'
 
 class TopCrawls extends Component {
   render () {
@@ -9,31 +13,31 @@ class TopCrawls extends Component {
             <h2 className="dark-background-text">Top BarCrawls in the US</h2>
           </Col>
           <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
-        <CardBody>
+          <NavLink to= 'popularcrawls/8'>
+        <CardHeader className= "card-header" tag="h6">Downtown San Diego</CardHeader>
         <CardImg 
           bottom width="100%" 
-          src=""
+          src={ SanDiego }
           alt="featured crawl" />
-        </CardBody>
+          </NavLink>
       </Card>
       <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
-        <CardBody>
+      <NavLink to= 'popularcrawls/7'>
+        <CardHeader className= "card-header" tag="h6">Vegas Baby</CardHeader>
         <CardImg 
           bottom width="100%" 
-          src=""
+          src={ Vegas }
           alt="featured crawl" />
-        </CardBody>
+        </NavLink>
       </Card>
       <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
-        <CardBody>
+        <NavLink to= 'popularcrawls/9'>
+        <CardHeader className= "card-header" tag="h6">Viva Tijuana</CardHeader>
         <CardImg 
           bottom width="100%" 
-          src=""
+          src={ Tijuana }
           alt="featured crawl" />
-        </CardBody>
+        </NavLink>
       </Card>
       
           {/* <div className="top-crawls-card-container">

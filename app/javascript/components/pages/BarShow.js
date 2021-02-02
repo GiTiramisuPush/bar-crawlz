@@ -17,6 +17,10 @@ class BarShow extends Component {
   // closeModal = () => this.setState({ isOpen: false });
 
 
+  // backToSearch = (userlocation, userterm) => {
+  //   this.props.getUserYelpInfo(userlocation, userterm)
+  //   this.props.indexYelpBars(userlocation, userterm)
+  // }
 
 
   render () {
@@ -24,8 +28,8 @@ class BarShow extends Component {
     const { bar } = this.props
     return (
       <div className= "page-container">
-      <NavLink 
-        to={`/`}
+      <NavLink to='/'
+        // onClick={ this.backToSearch() }
         ><h4 className="padding-sides padding-top dark-link">Back to Search</h4></NavLink>
       <center>
       <div>
