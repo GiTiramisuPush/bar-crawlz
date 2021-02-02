@@ -13,11 +13,6 @@ class CrawlShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      form:{
-        title: "",
-        user_id: this.props.current_user.id
-      },
-      success: false
       }
     }
 
