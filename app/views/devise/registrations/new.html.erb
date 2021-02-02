@@ -1,4 +1,11 @@
-<h2>Sign up</h2>
+<div class="vertically-centered-container flex-container log-in">
+ <div class="vertically-centered dark-purple-background">
+<%= image_tag("whitelogo.png", :alt => "BarCrawlz", :class => "sign-in-logo") %>
+</div>
+
+<div class="vertically-centered login-padding">
+<div>
+<h2 class= "XL-text">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -22,8 +29,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :class=>"button" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>
