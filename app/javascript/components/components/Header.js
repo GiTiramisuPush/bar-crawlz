@@ -6,8 +6,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
 } from 'reactstrap';
+import { NavLink } from 'react-router-dom'
 import HorizontalLogo from '../../assets/horizontallogo.png'
 
 
@@ -32,7 +32,11 @@ const Header = (props) => {
         className="navbar-top"
         expand="md"
         fixed="top">
-    <NavbarBrand className= "nav-link" href="/"><img className = "navbar-logo" src = { HorizontalLogo } /></NavbarBrand>
+    <NavbarBrand className= "nav-link">
+      <NavLink to="/">
+        <img className = "navbar-logo" src = { HorizontalLogo } />
+        </NavLink>
+    </NavbarBrand>
     <NavbarToggler onClick={toggle} className="mr-2" />
     <Collapse isOpen={isOpen} navbar>
       <Nav className="mr-auto" navbar>
@@ -40,12 +44,12 @@ const Header = (props) => {
           !logged_in &&
           <>
         <NavItem >
-        <NavLink className= "nav-link" href={ sign_in_route }>Sign In
-        </NavLink>
+        <a className= "nav-link" href={ sign_in_route }>Sign In
+        </a>
       </NavItem>
       <NavItem >
-        <NavLink className= "nav-link" href={ sign_up_route }>Sign Up
-        </NavLink>
+        <a className= "nav-link" href={ sign_up_route }>Sign Up
+        </a>
       </NavItem>
       </>
     }
@@ -53,12 +57,12 @@ const Header = (props) => {
           logged_in &&
           <>
         <NavItem >
-        <NavLink className= "nav-link" href='/UserDashboard'>User Dashboard
+        <NavLink className= "nav-link" to='/UserDashboard'>User Dashboard
         </NavLink>
       </NavItem>
       <NavItem >
-        <NavLink className= "nav-link" href={ sign_out_route }>Sign Out
-        </NavLink>
+        <a className= "nav-link" href={ sign_out_route }>Sign Out
+        </a>
       </NavItem>
       </>
     }

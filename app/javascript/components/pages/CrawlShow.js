@@ -8,7 +8,7 @@ import {
   Row, } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
 
-class BarCrawlEditP extends Component {
+class CrawlShow extends Component {
 
   constructor(props) {
     super(props)
@@ -37,44 +37,15 @@ class BarCrawlEditP extends Component {
     this.setState({ success: true })
   }
 
-  // handleSubmitDeleteBar = (e) => {
-  //   // keeps react from refreshing the page unnecessarily
-  //   e.preventDefault()
-  //   // a function call being passed from App.js
-  //   this.props.deleteBarFromCrawl(this.props.crawl)
-  // }
 
   render () {
 
-    console.log(this.props.crawl, "OUR CRAWL")
 
     return (
       <div className='purple-background'>
-      <h1 className= "dark-background-text padding-sides">
-          Edit Your Saved BarCrawl
-          </h1>
       {this.props.crawl &&
-        <h2 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h2>
+        <h1 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h1>
         }
-            <Form className="modal-form padding-sides">
-                    <FormGroup className= "edit-title-form-field">
-                        <Input
-                        type="text"
-                        name="title"
-                        placeholder="Write Your New Crawl Title Here 😉"
-                        value= { this.state.form.title }
-                        onChange={ this.handleChange }
-                        />
-                    </FormGroup>
-                <button 
-                className= "button-small" 
-                onClick={ this.handleSubmitUpdate }
-                disabled= { this.state.form.title.length < 1 }>
-                    UPDATE TITLE
-                </button>
-                </Form>
-
-
       
       <div className= "scroll-container">
       <div>
@@ -107,7 +78,7 @@ class BarCrawlEditP extends Component {
 
                   <button 
                     className="button">
-                    Delete from Crawl
+                    Add to Crawl!
                   </button>
 
               </Col>
@@ -125,17 +96,13 @@ class BarCrawlEditP extends Component {
         <div className="spacer"></div>
         <a 
           className= "light" 
-          href="/userdashboard"> 
-          Back to Dashboard
+          href="/"> 
+          Back to Home
         </a>
         </div>
         <div className= "flex-container">
-        <a 
-          className= "light" 
-          href={ this.props.sign_out_route }>Sign Out
-        </a>
+        <p>   </p>
         <div className="spacer"></div>
-        <div className="arrow-right" href={ this.props.sign_out_route }></div>
         </div>
         </div>
     </div>
@@ -143,4 +110,4 @@ class BarCrawlEditP extends Component {
   }
 }
 
-export default BarCrawlEditP
+export default CrawlShow
