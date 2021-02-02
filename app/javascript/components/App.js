@@ -44,9 +44,6 @@ class App extends React.Component {
 
   //fetch call to the Yelp API to return bars in a certain location with a specific term.
   indexYelpBars = (userlocation, userterm) => {
-    // let { location, term } = this.state
-    console.log(userlocation)
-    console.log(userterm)
     fetch(`/yelp?location=${userlocation}&term=${userterm}`)
     .then(response => response.json())
     .then(payload => {
