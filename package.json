@@ -31,9 +31,13 @@
     "build": "yarn build",
     "test": "jest"
   },
+
   "jest": {
     "roots": [
-      "app/"
-    ]
+      "app/javascript/components"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif)$": "<rootDir>/app/javascript/components/__mocks__/fileMock.js"
+    }
   }
 }

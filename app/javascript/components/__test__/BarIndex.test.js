@@ -8,7 +8,7 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16' 
 
  // Imports in the component we are going to be testing. 
-import Header from '../components/components/Header'
+import Col from '../components/BarIndex'
 
 //Allows us to utilize the adapter we import in earlier, allowing us to call and render a component. 
 Enzyme.configure({ adapter: new Adapter() }) 
@@ -18,11 +18,7 @@ Enzyme.configure({ adapter: new Adapter() })
 // import { shallow, mount, render } from 'enzyme';
 
 it('Header renders content', () => {
-  const header = shallow(<Header />)
-  expect(header.find('h4').text()).toEqual('Donut Bar')
+  const header = shallow(<Col />)
+  console.log(header.debug())
+  expect(header.find('h3').text()).toEqual('Your results for \" , \"')
 })
-
-
-test('1 + 1 equals 2', () => {
-    expect(1 + 1).toBe(2);
-  });
