@@ -27,7 +27,7 @@ h1, h2{
     font-weight: 600;
 }
 
-h1.dark-background-text, h2.dark-background-text, p.dark-background-text{
+.dark-background-text{
     color: $light-text;
 }
 
@@ -608,4 +608,31 @@ a.button:hover{
         // max-width: 20vw;
 
     }
+}
+
+//CrawlShow Page
+.hidden{
+    display: none;
+}
+
+@include media-breakpoint-down(sm){
+.padding-sides.centered-text-breakpoint.flex-container.space-between{
+    display: block
+    }
+}
+
+.copy-link-box{
+    background-color: $medium-purp;
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+}
+@include media-breakpoint-down(sm){
+.copy-link-box{
+    background-color: transparent;
+    margin-top: 10px;
+    
+}
 }

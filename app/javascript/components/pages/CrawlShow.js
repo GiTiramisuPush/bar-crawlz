@@ -5,7 +5,8 @@ import {
   Form,
   FormGroup,
   Card,
-  Row, } from 'reactstrap';
+  Row,
+  Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
 
 class CrawlShow extends Component {
@@ -13,6 +14,7 @@ class CrawlShow extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      copySuccess: '' 
       }
     }
 
@@ -32,6 +34,15 @@ class CrawlShow extends Component {
     this.setState({ success: true })
   }
 
+  copyToClipboard = (e) => {
+    this.textArea.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    this.setState({ copySuccess: 'Copied!' });
+  };
+
 
   render () {
 
@@ -39,8 +50,29 @@ class CrawlShow extends Component {
     return (
       <div className='purple-background'>
       {this.props.crawl &&
-        <h1 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h1>
+      <div className= "padding-sides centered-text-breakpoint flex-container space-between">
+        <h1 className= "dark-background-text">"{this.props.crawl.title}"</h1>
+        <div className="copy-link-box">
+      <h4 className= "dark-background-text">Copy the link to this crawl to share!</h4>
+      
+        {
+         /* Logical shortcut for only displaying the 
+            button if the copy command exists */
+         document.queryCommandSupported('copy') &&
+          <div><center>
+            <button className="button-small" onClick={this.copyToClipboard}>Copy</button> 
+            <p className= "dark-background-text">{this.state.copySuccess}</p></center>
+          </div>
         }
+        <form className="hidden">
+          <textarea
+            ref={(textarea) => this.textArea = textarea}
+            value={`http://barcrawlz.heroku.app/popularcrawls/${this.props.crawl.id}`}
+          />
+        </form>
+      </div>
+      </div>
+  }
       
       <div className= "scroll-container">
       <div>
