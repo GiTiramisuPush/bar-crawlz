@@ -16,6 +16,7 @@ import BarShow from './pages/BarShow'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import UserDashboardP from './pages/UserDashboardP'
+import CrawlShow from './pages/CrawlShow'
 
 import {
   BrowserRouter as  Router,
@@ -214,19 +215,6 @@ updateCrawlTitle = (crawl, id) => {
   })
 }
 
-// indexOurBars = () => {
-//   fetch("/bars")
-//   .then(response => {
-//     return response.json()
-//   })
-//   .then(payload => {
-//     this.setState({ bars: payload })
-//   })
-//   .catch(errors => {
-//     console.log("index bar errors:", errors)
-//   })
-// }
-
 // deleteBarFromCrawl = (id) => {
 //   alert("Are you sure you want to delete this bar from your crawl?")
 //   fetch(`/bars/${id}`, {
@@ -243,7 +231,7 @@ updateCrawlTitle = (crawl, id) => {
 //     return response.json()
 //   })
 //   .then(() => {
-//     this.indexOurBars()
+//     this.indexCrawls()
 //   })
 //   .catch(errors => {
 //     console.log("delete bar from crawl errors", errors)
@@ -322,16 +310,14 @@ updateCrawlTitle = (crawl, id) => {
       render={ (props) => {
         let id = props.match.params.id
         let crawl = this.state.crawls.filter(crawl => crawl.id === parseInt(id))
-        // filters all the crawls so they only show the ones with the logged in user's ID
-        let userid = this.props.current_user.id
-        let crawls = this.state.crawls.filter(crawl => crawl.user_id === userid)
+
               return (
                 <BarCrawlEditP
                   current_user={ this.props.current_user }
-                  crawls= { crawls }
-                  crawl= { crawl }
+                  crawl= { crawl[0] }
                   sign_out_route = { this.props.sign_out_route }
                   updateCrawlTitle={ this.updateCrawlTitle }
+                  bars={ this.state.ourBars }
                   // deleteBarFromCrawl={ this.deleteBarFromCrawl }
                 />
               )
@@ -365,6 +351,24 @@ updateCrawlTitle = (crawl, id) => {
       }}
     />
   }
+
+  {/* ------CrawlShow Route------- */}
+  <Route 
+      path="/popularcrawls/:id"
+      render={ (props) => {
+        let id = props.match.params.id
+        let crawl = this.state.crawls.filter(crawl => crawl.id === parseInt(id))
+
+              return (
+                <CrawlShow
+                  current_user={ this.props.current_user }
+                  crawl= { crawl[0] }
+                  sign_out_route = { this.props.sign_out_route }
+                />
+              )
+            }}
+          />
+
 
     {/* -----NotFound Route----- */}
     <Route component={ NotFound } />

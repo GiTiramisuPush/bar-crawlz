@@ -1,7 +1,7 @@
 class CrawlsController < ApplicationController
     def index
         crawls = Crawl.all 
-        render json: crawls
+        render json: crawls, include: :bars
     end
         #A single crawl will include all bars
     def show 

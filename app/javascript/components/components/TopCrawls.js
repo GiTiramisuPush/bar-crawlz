@@ -9,7 +9,7 @@ class TopCrawls extends Component {
             <h2 className="dark-background-text">Top BarCrawls in the US</h2>
           </Col>
           <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
+        <CardHeader className= "card-header" tag="h6">Downtown San Diego</CardHeader>
         <CardBody>
         <CardImg 
           bottom width="100%" 
@@ -18,7 +18,7 @@ class TopCrawls extends Component {
         </CardBody>
       </Card>
       <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
+        <CardHeader className= "card-header" tag="h6">Vegas Baby</CardHeader>
         <CardBody>
         <CardImg 
           bottom width="100%" 
@@ -27,7 +27,7 @@ class TopCrawls extends Component {
         </CardBody>
       </Card>
       <Card className= "top-crawls-card">
-        <CardHeader className= "card-header" tag="h6">Featured Crawl</CardHeader>
+        <CardHeader className= "card-header" tag="h6">Viva Tijuana</CardHeader>
         <CardBody>
         <CardImg 
           bottom width="100%" 
