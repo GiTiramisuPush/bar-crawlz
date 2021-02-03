@@ -44,7 +44,7 @@ const Header = (props) => {
           !logged_in &&
           <>
         <NavItem >
-        <a className= "nav-link" href={ sign_in_route }>Sign In
+        <a className= "nav-link" href={ sign_in_route } id="signIn">Sign In
         </a>
       </NavItem>
       <NavItem >

@@ -79,4 +79,17 @@ end
 - Controller methods 
 - 
 
-
+## Testing Frontend
+- yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+- yarn add --dev jest babel-jest babel-preset-es2015
+-   "scripts": {
+    "start": "yarn start",
+    "build": "yarn build",
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "app/"
+    ]
+  }
+- 
