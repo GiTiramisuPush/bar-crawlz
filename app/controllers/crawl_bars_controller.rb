@@ -2,7 +2,6 @@ class CrawlBarsController < ApplicationController
 
     def destroy
         crawlbar = CrawlBar.find_by(crawl_id: params[:id], bar_id: params[:bar_id])
-        debugger
         crawlbar.destroy
         if crawlbar.valid?
             render json: crawlbar

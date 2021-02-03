@@ -214,7 +214,8 @@ updateCrawlTitle = (crawl, id) => {
 
 deleteBarFromCrawl = (crawlId, barId) => {
   alert("Are you sure you want to delete this bar from your crawl?")
-  fetch(`/crawl_bars/${crawlId}&bar_id=${barId}`, {
+  fetch(`/crawl_bars/${crawlId}`, {
+    body: JSON.stringify({bar_id: barId}),
     headers: {
       "Content-Type": "application/json"
     },

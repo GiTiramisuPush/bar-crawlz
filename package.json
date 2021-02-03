@@ -31,7 +31,6 @@
     "build": "yarn build",
     "test": "jest"
   },
-
   "jest": {
     "roots": [
       "app/javascript/components"
