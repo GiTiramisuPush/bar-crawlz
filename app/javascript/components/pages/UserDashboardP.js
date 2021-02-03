@@ -51,7 +51,7 @@ class UserDashboardP extends Component {
     return (
       <div className='purple-background'>
         <div className='padding-sides'>
-        <h1 className= "dark-background-text">
+        <h1 className= "dark-background-text centered-text-breakpoint">
             User Dashboard
             </h1>
         <h2 className= "dark-background-text">

@@ -6,6 +6,7 @@ import Tijuana from '../../assets/TJ.png'
 import Vegas from '../../assets/Vegas.png'
 
 class TopCrawls extends Component {
+  
   render () {
     return (
 <CardDeck className= "top-crawls-container">
@@ -22,7 +23,7 @@ class TopCrawls extends Component {
           </NavLink>
       </Card>
       <Card className= "top-crawls-card">
-      <NavLink to= 'popularcrawls/7'>
+      <NavLink to= 'popularcrawls/6'>
         <CardHeader className= "card-header" tag="h6">Vegas Baby</CardHeader>
         <CardImg 
           bottom width="100%" 
@@ -39,26 +40,6 @@ class TopCrawls extends Component {
           alt="featured crawl" />
         </NavLink>
       </Card>
-      
-          {/* <div className="top-crawls-card-container">
-            <div className="top-crawls-card-container-top">
-
-            </div>
-          </div>
-          <div className="top-crawls-card-container">
-            <div className="top-crawls-card-container-top">
-              <div className="top-crawls-car-container-pic">
-                
-              </div>
-            </div>
-          </div>
-          <div className="top-crawls-card-container">
-            <div className="top-crawls-card-container-top">
-              <div className="top-crawls-car-container-pic">
-                
-              </div>
-            </div>
-          </div> */}
         </CardDeck>
     );
   }
