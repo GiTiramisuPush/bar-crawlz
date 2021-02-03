@@ -17,7 +17,8 @@ class BarCrawlEditP extends Component {
         title: "",
         user_id: this.props.current_user.id
       },
-      success: false
+      success: false,
+      copySuccess: ''
       }
     }
 
@@ -33,30 +34,41 @@ class BarCrawlEditP extends Component {
     // keeps react from refreshing the page unnecessarily
     e.preventDefault()
     // a function call being passed from App.js
-    this.props.updateCrawlTitle(this.state.form, this.props.crawl[0].id)
+    this.props.updateCrawlTitle(this.state.form, this.props.crawl.id)
     this.setState({ success: true })
   }
 
-  // handleSubmitDeleteBar = (e) => {
-  //   // keeps react from refreshing the page unnecessarily
-  //   e.preventDefault()
-  //   // a function call being passed from App.js
-  //   this.props.deleteBarFromCrawl(this.props.crawl)
-  // }
+  handleSubmitDeleteBar = (e, crawlid, barid) => {
+    // keeps react from refreshing the page unnecessarily
+    e.preventDefault()
+    // a function call being passed from App.js
+    this.props.deleteBarFromCrawl(crawlid, barid)
+  }
+
+  copyToClipboard = (e) => {
+    this.textArea.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    this.setState({ copySuccess: 'Copied!' });
+  };
 
   render () {
-
-    console.log(this.props.crawl, "OUR CRAWL")
+      
 
     return (
       <div className='purple-background'>
-      <h1 className= "dark-background-text padding-sides">
+
+          {this.props.crawl &&
+      <div className= "padding-sides centered-text-breakpoint flex-container space-between">
+        <div>
+        <h1 className= "dark-background-text">
           Edit Your Saved BarCrawl
           </h1>
-      {this.props.crawl &&
-        <h2 className= "dark-background-text padding-sides">"{this.props.crawl.title}"</h2>
-        }
-            <Form className="modal-form padding-sides">
+        <h2 className= "dark-background-text">"{this.props.crawl.title}"</h2>
+
+        <Form className="modal-form">
                     <FormGroup className= "edit-title-form-field">
                         <Input
                         type="text"
@@ -73,6 +85,29 @@ class BarCrawlEditP extends Component {
                     UPDATE TITLE
                 </button>
                 </Form>
+            </div>
+        <div className="copy-link-box">
+      <h4 className= "dark-background-text">Copy the link to this crawl to share!</h4>
+      
+        {
+         /* Logical shortcut for only displaying the 
+            button if the copy command exists */
+         document.queryCommandSupported('copy') &&
+          <div><center>
+            <button className="button" onClick={this.copyToClipboard}>Copy</button> 
+            <p className= "dark-background-text">{this.state.copySuccess}</p></center>
+          </div>
+        }
+        <form className="hidden">
+          <textarea
+            ref={(textarea) => this.textArea = textarea}
+            value={`http://barcrawlz.herokuapp.com/popularcrawls/${this.props.crawl.id}`}
+          />
+        </form>
+      </div>
+      </div>
+  }
+          
 
 
       
@@ -106,7 +141,7 @@ class BarCrawlEditP extends Component {
                 </NavLink> */}
 
                   <button 
-                    className="button">
+                    className="button" onClick={ (e) => this.handleSubmitDeleteBar(e, this.props.crawl.id, bar.id) }>
                     Delete from Crawl
                   </button>
 
@@ -117,6 +152,7 @@ class BarCrawlEditP extends Component {
         })}
         </div>
     </div>
+
 
           <br/>
         <div className= "flex-container space-between padding-sides">
