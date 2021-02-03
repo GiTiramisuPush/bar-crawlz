@@ -53,7 +53,7 @@ class AboutUs extends Component {
         </Col>
         </Row>
         <div className= "about-us-paragraph extra-padding">
-        <p>
+        <p id="aboutUs">
           <br/>
         We created this app as a way to more easily plan out a night on the town. We know how long it can take to sift through ratings, restaurants, and bars on Google Maps or Yelp to figure out which look the most fun for a night out.
         <br/>
@@ -61,10 +61,13 @@ class AboutUs extends Component {
         V1 makes it easy to find and save bars to a list.
         <br/>
         <br/>
-        V2 will include Leaflet maps to discover the distances between bars and more efficiently plan your perfect barcrawl. 
+        V2 will include Leaflet maps to discover the distances between bars and more efficiently plan your perfect barcrawl.
         <br/>
         <br/>
-        This full stack React-in-Rails App was created by Summer Cook, Filippo Venturini, and Ryan Sarll. It uses information from the Yelp Fusion API, and it We are students at LEARN Academy, a Full-Stack Software Development Bootcamp based in San Diego, CA.
+        This full stack React-in-Rails App was created by Summer Cook, Filippo Venturini, and Ryan Sarll. It uses information from the Yelp Fusion API, and 3 data tables in rails includes Rails Devise for its users. It also uses Reactstrap for consistent styling.
+        <br/>
+        <br/>
+        We are students at LEARN Academy, a Full-Stack Software Development Bootcamp based in San Diego, CA.
         </p>
         </div>
         </center>

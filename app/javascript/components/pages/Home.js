@@ -47,14 +47,14 @@ class Home extends Component {
             <img className= "map-image"
             src = { SanDiegoMap } />
           </Col>
-          <Col className= "hero-text-div">
-            <h1 className="hero-text">
+          <Col className= "centered-text-breakpoint">
+            <h1 className="hero-text XL-text">
             Drink to Discover a New City!
             </h1>
             <h2 className="hero-text">
               Plan the night you'll always remember
             </h2>
-            <Form className= "search-form">
+            <Form className= "search-form centered-text-breakpoint">
               <FormGroup className= "search-field">
                 <Input
                   type="text"
@@ -64,6 +64,7 @@ class Home extends Component {
                   onChange={ this.handleChange }
                 />
               </FormGroup>
+              <div className="spacer"></div>
               <FormGroup className= "search-field">
                 <Input
                   type="text"

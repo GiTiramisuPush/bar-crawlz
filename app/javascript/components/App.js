@@ -212,28 +212,29 @@ updateCrawlTitle = (crawl, id) => {
   })
 }
 
-// deleteBarFromCrawl = (id) => {
-//   alert("Are you sure you want to delete this bar from your crawl?")
-//   fetch(`/bars/${id}`, {
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     method: "DELETE"
-//   })
-//   .then(response => {
-//     console.log(response)
-//     if(response.status === 422){
-//       alert("There is something wrong with your submission.")
-//     }
-//     return response.json()
-//   })
-//   .then(() => {
-//     this.indexCrawls()
-//   })
-//   .catch(errors => {
-//     console.log("delete bar from crawl errors", errors)
-//   })
-// }
+deleteBarFromCrawl = (crawlId, barId) => {
+  alert("Are you sure you want to delete this bar from your crawl?")
+  fetch(`/crawl_bars/${crawlId}`, {
+    body: JSON.stringify({bar_id: barId}),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "DELETE"
+  })
+  .then(response => {
+    console.log(response)
+    if(response.status === 422){
+      alert("There is something wrong with your submission.")
+    }
+    return response.json()
+  })
+  .then(() => {
+    this.indexCrawls()
+  })
+  .catch(errors => {
+    console.log("delete bar from crawl errors", errors)
+  })
+}
 
   render () {
 
@@ -315,7 +316,7 @@ updateCrawlTitle = (crawl, id) => {
                   sign_out_route = { this.props.sign_out_route }
                   updateCrawlTitle={ this.updateCrawlTitle }
                   bars={ this.state.ourBars }
-                  // deleteBarFromCrawl={ this.deleteBarFromCrawl }
+                  deleteBarFromCrawl={ this.deleteBarFromCrawl }
                 />
               )
             }}
@@ -359,8 +360,14 @@ updateCrawlTitle = (crawl, id) => {
               return (
                 <CrawlShow
                   current_user={ this.props.current_user }
+                  crawls={ this.state.crawls }
                   crawl= { crawl[0] }
+                  sign_in_route = { this.props.sign_in_route }
                   sign_out_route = { this.props.sign_out_route }
+                  sign_up_route = { this.props.sign_up_route }
+                  logged_in={ this.props.logged_in }
+                  createNewCrawl={ this.createNewCrawl }
+                  addBartoCrawl={ this.addBartoCrawl }
                 />
               )
             }}
