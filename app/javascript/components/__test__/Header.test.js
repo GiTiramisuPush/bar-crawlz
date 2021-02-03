@@ -8,15 +8,14 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16' 
 
  // Imports in the component we are going to be testing. 
-import Navbar from '../components/Header'
+import Header from '../components/Header'
 
 //Allows us to utilize the adapter we import in earlier, allowing us to call and render a component. 
 Enzyme.configure({ adapter: new Adapter() }) 
 
 
-
-  it('Entire Nav bar renders', () => {
-    const header = shallow(<Navbar />)
-    console.log(header.debug())
-    expect(header.find('Navbar').text()).toEqual('<Navbar />')
+  it('When the header loads, it displays a sign-in button', () => {
+    const header = shallow(<Header />)
+    // console.log(header.debug())
+    expect(header.find("#signIn").text()).toEqual("Sign In")
   })

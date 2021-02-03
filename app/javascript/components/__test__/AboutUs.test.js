@@ -11,12 +11,13 @@ Enzyme.configure({ adapter: new Adapter() })
 
 
 
-it('show renders content', () => {
+it('show h1 tag contents', () => {
     const show = shallow(<AboutUs />)
     expect(show.find('h1').text()).toEqual('About the App')
   })
 
-
-// test('1 + 1 equals 2', () => {
-//     expect(1 + 1).toBe(2);
-//   });
+it('show p tag content', () => {
+  const show = shallow(<AboutUs />)
+  console.log(show.debug())
+  expect(show.find("#aboutUs").text()).toEqual('We created this app as a way to more easily plan out a night on the town. We know how long it can take to sift through ratings, restaurants, and bars on Google Maps or Yelp to figure out which look the most fun for a night out.V1 makes it easy to find and save bars to a list.V2 will include Leaflet maps to discover the distances between bars and more efficiently plan your perfect barcrawl.This full stack React-in-Rails App was created by Summer Cook, Filippo Venturini, and Ryan Sarll. It uses information from the Yelp Fusion API, and We are students at LEARN Academy, a Full-Stack Software Development Bootcamp based in San Diego, CA.')
+})
