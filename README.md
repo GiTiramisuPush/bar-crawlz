@@ -1,7 +1,13 @@
 ### README 
+
 ### What the project does
 
+The app uses Yelp fusion API to look for bar and add them to a bar crawl
+
+
+
 ### Why the project is useful
+
 
 ### How users can get started with the project
 
