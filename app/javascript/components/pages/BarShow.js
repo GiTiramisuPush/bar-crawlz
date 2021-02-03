@@ -17,7 +17,7 @@ class BarShow extends Component {
       <div className= "page-container">
       <NavLink to='/'
         // onClick={ this.backToSearch() }
-        ><h4 className="padding-sides padding-top dark-link">Back to Search</h4></NavLink>
+        ><h4 className="padding-sides padding-top dark-link">Back to Home</h4></NavLink>
       <center>
       <div>
       <Row className= "bar-details-card">
