@@ -101,7 +101,7 @@ class BarCrawlEditP extends Component {
         <form className="hidden">
           <textarea
             ref={(textarea) => this.textArea = textarea}
-            value={`http://barcrawlz.heroku.app/popularcrawls/${this.props.crawl.id}`}
+            value={`http://barcrawlz.herokuapp.com/popularcrawls/${this.props.crawl.id}`}
           />
         </form>
       </div>

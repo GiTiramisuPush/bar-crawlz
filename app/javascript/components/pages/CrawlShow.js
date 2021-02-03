@@ -8,6 +8,7 @@ import {
   Row,
   Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom'
+import NewCrawlModal from '../components/NewCrawlModal'
 
 class CrawlShow extends Component {
 
@@ -54,22 +55,23 @@ class CrawlShow extends Component {
         <h1 className= "dark-background-text">"{this.props.crawl.title}"</h1>
         <div className="copy-link-box">
       <h4 className= "dark-background-text">Copy the link to this crawl to share!</h4>
-      
+      <div className="flex-container centered-text-breakpoint">
         {
          /* Logical shortcut for only displaying the 
             button if the copy command exists */
          document.queryCommandSupported('copy') &&
           <div><center>
             <button className="button-small" onClick={this.copyToClipboard}>Copy</button> 
-            <p className= "dark-background-text">{this.state.copySuccess}</p></center>
+            <span className= "dark-background-text">{this.state.copySuccess}</span></center>
           </div>
         }
-        <form className="hidden">
+        <form>
           <textarea
             ref={(textarea) => this.textArea = textarea}
-            value={`http://barcrawlz.heroku.app/popularcrawls/${this.props.crawl.id}`}
+            value={`http://barcrawlz.herokuapp.com/popularcrawls/${this.props.crawl.id}`}
           />
         </form>
+      </div>
       </div>
       </div>
   }
@@ -103,10 +105,29 @@ class CrawlShow extends Component {
                   </button>
                 </NavLink> */}
 
-                  <button 
-                    className="button">
-                    Add to Crawl!
-                  </button>
+                   {/* conditionally render the add to crawl button with a link to the sign in route if the user is not logged in */}
+                {
+              !this.props.logged_in &&
+                <Button className = 'button' 
+                href = { this.props.sign_in_route }>
+                  Add to Crawl
+                </Button>
+                  }
+            {/* if the user is logged in, conditionally render the modal to add the bar to a crawl */}
+                {
+                  this.props.logged_in &&
+
+                  < NewCrawlModal
+                        current_user={ this.props.current_user }
+                        crawls = { this.props.crawls.filter(crawl => crawl.user_id === this.props.current_user.id) }
+                        sign_in_route = { this.props.sign_in_route }
+                        sign_out_route = { this.props.sign_out_route }
+                        sign_up_route = { this.props.sign_up_route }
+                        name = { bar.name }
+                        bar={ bar }
+                        createNewCrawl={ this.props.createNewCrawl }
+                        addBartoCrawl={ this.props.addBartoCrawl } />
+                }
 
               </Col>
               </Row>

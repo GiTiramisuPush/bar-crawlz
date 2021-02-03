@@ -429,7 +429,7 @@ a.button:hover{
     padding-top: 6px;
     height: 30px;
     margin-right: 10px;
-    min-width: 250px
+    min-width: 250px;
 }
 
 //User Dashboard Page & BarCrawl Edit
@@ -627,7 +627,7 @@ a.button:hover{
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
 }
 @include media-breakpoint-down(sm){
 .copy-link-box{
@@ -635,4 +635,15 @@ a.button:hover{
     margin-top: 10px;
     
 }
+}
+
+textarea{
+    background-color: $medium-purp;
+    min-width: 250px;
+    max-height: 32px;
+    border-radius: 3px;
+    padding-top: 0px;
+    margin-top: 8px;
+    margin-left: 20px;
+    border: 0px solid black;
 }

@@ -8,19 +8,6 @@ import TopCrawls from '../components/TopCrawls'
 import SignInBanner from '../components/SignInBanner'
 
 class BarShow extends Component {
-  // state = {
-  //   isOpen: false
-  // };
-
-  // //opens and closes the "NewCrawlModal" component
-  // openModal = () => this.setState({ isOpen: true });
-  // closeModal = () => this.setState({ isOpen: false });
-
-
-  // backToSearch = (userlocation, userterm) => {
-  //   this.props.getUserYelpInfo(userlocation, userterm)
-  //   this.props.indexYelpBars(userlocation, userterm)
-  // }
 
 
   render () {
