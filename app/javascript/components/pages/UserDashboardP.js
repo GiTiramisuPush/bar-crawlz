@@ -38,7 +38,6 @@ class UserDashboardP extends Component {
     // e.preventDefault()
     // a function call being passed from App.js
         //do we need to pass the user ID here?????
-        console.log(this.state.form)
     this.props.newCrawlOnly(this.state.form)
     this.setState({ success: true })
   }

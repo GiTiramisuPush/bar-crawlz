@@ -30,14 +30,29 @@ class Home extends Component {
   handleSubmit = (e) => {
     let { form, viewToggle } = this.state
     e.preventDefault()
-    console.log("viewtoggle", viewToggle)
     if(form.location.length > 0){
       this.props.getUserYelpInfo(form.location, form.term)
       this.setState({ viewToggle: true })
+      sessionStorage.setItem("location", form.location)
+      sessionStorage.setItem("term", form.term)
     } else{
       return alert("You must enter a location to search!")
     }
   }
+
+  componentDidMount(){
+    this.changeToggleOnLoad
+  }
+
+  changeToggleOnLoad = () => {
+    let storedLocation = sessionStorage.getItem(location)
+    if (storedLocation && this.props.bars){
+      this.setState({ viewToggle:true })
+    }
+  }
+
+  
+
 
   render () {
     return (

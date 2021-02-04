@@ -10,6 +10,11 @@ import SignInBanner from '../components/SignInBanner'
 class BarShow extends Component {
 
 
+
+// backToSearch = () => {
+//   this.props.indexYelpBars(sessionStorage.getItem("location"), sessionStorage.getItem("term"))
+// }
+
   render () {
 
     const { bar } = this.props

@@ -38,7 +38,9 @@ class App extends React.Component {
 
   //this method takes the user's inputted information from the Search Bar on the Home Page. 
   //It then runs the indexYelpBars method (which is a fetch call to the API) with this user's search info as its arguments.
-  getUserYelpInfo = (userlocation, userterm) => {
+
+ 
+ getUserYelpInfo = (userlocation, userterm) => {
     this.indexYelpBars(userlocation, userterm)
   }
 
@@ -47,7 +49,6 @@ class App extends React.Component {
     fetch(`/yelp?location=${userlocation}&term=${userterm}`)
     .then(response => response.json())
     .then(payload => {
-      console.log(payload)
       this.setState({bars: payload})
     })
   }
@@ -148,7 +149,6 @@ deleteCrawl = (id) => {
     method: "DELETE"
   })
   .then(response => {
-    console.log(response)
     if(response.status === 422){
       alert("There is something wrong with your submission.")
     }
@@ -189,7 +189,6 @@ newCrawlOnly = (newcrawl) => {
 //methods used in barcrawl edit
 
 updateCrawlTitle = (crawl, id) => {
-  console.log(id,"CRAWL ID")
   fetch(`/crawls/${id}`, {
     body: JSON.stringify(crawl),
     headers: {
@@ -198,7 +197,6 @@ updateCrawlTitle = (crawl, id) => {
     method: "PATCH"
   })
   .then(response => {
-    console.log(response)
     if(response.status === 422){
       alert("There is something wrong with your submission.")
     }
@@ -222,7 +220,6 @@ deleteBarFromCrawl = (crawlId, barId) => {
     method: "DELETE"
   })
   .then(response => {
-    console.log(response)
     if(response.status === 422){
       alert("There is something wrong with your submission.")
     }
@@ -238,10 +235,7 @@ deleteBarFromCrawl = (crawlId, barId) => {
 
   render () {
 
-//info about whats happening with logged in users etc
-    console.log("logged in", this.props.logged_in)
-    console.log("current user", this.props.current_user)
-    console.log("this.state.bars", this.state.bars)
+
 
     return (
 
